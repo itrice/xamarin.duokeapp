@@ -1,0 +1,13 @@
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\bin\Debug\netstandard2.0\JZXY.Duoke.deps.json
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\bin\Debug\netstandard2.0\JZXY.Duoke.dll
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\bin\Debug\netstandard2.0\JZXY.Duoke.pdb
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\JZXY.Duoke.csprojAssemblyReference.cache
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\App.xaml.g.cs
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\LoginPage.xaml.g.cs
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\JZXY.Duoke.csproj.CoreCompileInputs.cache
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\JZXY.Duoke.AssemblyInfoInputs.cache
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\JZXY.Duoke.AssemblyInfo.cs
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\XamlC.stamp
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\JZXY.Duoke.dll
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\JZXY.Duoke.pdb
