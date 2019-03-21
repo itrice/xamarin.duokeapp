@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\JZXY.Duoke.Android.csproj": {}
+    "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\JZXY.Duoke.Android.csproj": {}
   },
   "projects": {
-    "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\JZXY.Duoke.Android.csproj": {
+    "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\JZXY.Duoke.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\JZXY.Duoke.Android.csproj",
+        "projectUniqueName": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\JZXY.Duoke.Android.csproj",
         "projectName": "JZXY.Duoke.Android",
-        "projectPath": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\JZXY.Duoke.Android.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\obj\\",
+        "projectPath": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\JZXY.Duoke.Android.csproj",
+        "packagesPath": "C:\\Users\\iTrice\\.nuget\\packages\\",
+        "outputPath": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
           "C:\\Program Files (x86)\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\iTrice\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,8 +32,8 @@
         "frameworks": {
           "monoandroid81": {
             "projectReferences": {
-              "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj": {
-                "projectPath": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj"
+              "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj": {
+                "projectPath": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj"
               }
             }
           }
@@ -74,34 +72,32 @@
             },
             "Xamarin.Essentials": {
               "target": "Package",
-              "version": "[1.0.1, )"
+              "version": "[1.1.0, )"
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[3.6.0.220655, )"
+              "version": "[4.0.0.250467-pre7, )"
             }
           }
         }
       }
     },
-    "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj": {
+    "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj",
+        "projectUniqueName": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj",
         "projectName": "JZXY.Duoke",
-        "projectPath": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\obj\\",
+        "projectPath": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj",
+        "packagesPath": "C:\\Users\\iTrice\\.nuget\\packages\\",
+        "outputPath": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
           "C:\\Program Files (x86)\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\iTrice\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -109,13 +105,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://dotnetfeed.blob.core.windows.net/aspnet-aspnetcore-tooling/index.json": {},
-          "https://dotnetfeed.blob.core.windows.net/aspnet-aspnetcore/index.json": {},
-          "https://dotnetfeed.blob.core.windows.net/aspnet-entityframeworkcore/index.json": {},
-          "https://dotnetfeed.blob.core.windows.net/aspnet-extensions/index.json": {},
-          "https://dotnetfeed.blob.core.windows.net/dotnet-core/index.json": {},
-          "https://dotnetfeed.blob.core.windows.net/dotnet-windowsdesktop/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {

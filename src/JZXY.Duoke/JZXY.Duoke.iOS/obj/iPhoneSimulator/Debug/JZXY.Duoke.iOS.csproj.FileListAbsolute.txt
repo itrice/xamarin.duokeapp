@@ -1,0 +1,8 @@
+E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.iOS\obj\iPhoneSimulator\Debug\ibtool\_BundleResourceWithLogicalName.items
+E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.iOS\obj\iPhoneSimulator\Debug\actool\_PartialAppManifest.items
+E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.iOS\obj\iPhoneSimulator\Debug\actool\_BundleResourceWithLogicalName.items
+E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.iOS\obj\iPhoneSimulator\Debug\coremlc\_PartialAppManifest.items
+E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.iOS\obj\iPhoneSimulator\Debug\coremlc\_BundleResourceWithLogicalName.items
+E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.iOS\obj\iPhoneSimulator\Debug\optimized\
+E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.iOS\obj\iPhoneSimulator\Debug\JZXY.Duoke.iOS.csprojAssemblyReference.cache
+E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.iOS\obj\iPhoneSimulator\Debug\JZXY.Duoke.iOS.csproj.CoreCompileInputs.cache

@@ -13,6 +13,9 @@ public class AHorizontalScrollView
 			"n_onInterceptTouchEvent:(Landroid/view/MotionEvent;)Z:GetOnInterceptTouchEvent_Landroid_view_MotionEvent_Handler\n" +
 			"n_onTouchEvent:(Landroid/view/MotionEvent;)Z:GetOnTouchEvent_Landroid_view_MotionEvent_Handler\n" +
 			"n_onScrollChanged:(IIII)V:GetOnScrollChanged_IIIIHandler\n" +
+			"n_draw:(Landroid/graphics/Canvas;)V:GetDraw_Landroid_graphics_Canvas_Handler\n" +
+			"n_isHorizontalScrollBarEnabled:()Z:GetIsHorizontalScrollBarEnabledHandler\n" +
+			"n_setHorizontalScrollBarEnabled:(Z)V:GetSetHorizontalScrollBarEnabled_ZHandler\n" +
 			"";
 		mono.android.Runtime.register ("Xamarin.Forms.Platform.Android.AHorizontalScrollView, Xamarin.Forms.Platform.Android", AHorizontalScrollView.class, __md_methods);
 	}
@@ -72,6 +75,30 @@ public class AHorizontalScrollView
 	}
 
 	private native void n_onScrollChanged (int p0, int p1, int p2, int p3);
+
+
+	public void draw (android.graphics.Canvas p0)
+	{
+		n_draw (p0);
+	}
+
+	private native void n_draw (android.graphics.Canvas p0);
+
+
+	public boolean isHorizontalScrollBarEnabled ()
+	{
+		return n_isHorizontalScrollBarEnabled ();
+	}
+
+	private native boolean n_isHorizontalScrollBarEnabled ();
+
+
+	public void setHorizontalScrollBarEnabled (boolean p0)
+	{
+		n_setHorizontalScrollBarEnabled (p0);
+	}
+
+	private native void n_setHorizontalScrollBarEnabled (boolean p0);
 
 	private java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)

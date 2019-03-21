@@ -337,12 +337,13 @@
           "build/monoandroid81/Xamarin.Android.Support.Vector.Drawable.targets": {}
         }
       },
-      "Xamarin.Essentials/1.0.1": {
+      "Xamarin.Essentials/1.1.0": {
         "type": "package",
         "dependencies": {
           "System.Numerics.Vectors": "4.5.0",
-          "Xamarin.Android.Support.Core.Utils": "27.0.2.1",
-          "Xamarin.Android.Support.CustomTabs": "27.0.2.1"
+          "Xamarin.Android.Support.Compat": "28.0.0.1",
+          "Xamarin.Android.Support.Core.Utils": "28.0.0.1",
+          "Xamarin.Android.Support.CustomTabs": "28.0.0.1"
         },
         "frameworkAssemblies": [
           "Java.Interop",
@@ -356,7 +357,7 @@
           "lib/monoandroid81/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/3.6.0.220655": {
+      "Xamarin.Forms/4.0.0.250467-pre7": {
         "type": "package",
         "dependencies": {
           "Xamarin.Android.Support.Design": "27.0.2",
@@ -890,13 +891,19 @@
         "xamarin.android.support.vector.drawable.nuspec"
       ]
     },
-    "Xamarin.Essentials/1.0.1": {
-      "sha512": "cGSje2LlYsCdscPt2zAG4e0Zzr08zc21Cj4DAMub3GR37lc/vzAVwGxco8NeCSzcZs147wYbXkFCXwOr4LUO9A==",
+    "Xamarin.Essentials/1.1.0": {
+      "sha512": "W0XOt1dNMAE2POcsVotoKDDy5FdAOnR0qULKl6WI4kQEMxQ1sp84DsSU5iacV7oQUMuPhUBAm/3ywks0HO1QrQ==",
       "type": "package",
-      "path": "xamarin.essentials/1.0.1",
+      "path": "xamarin.essentials/1.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "lib/monoandroid60/Xamarin.Essentials.dll",
+        "lib/monoandroid60/Xamarin.Essentials.pdb",
+        "lib/monoandroid60/Xamarin.Essentials.xml",
+        "lib/monoandroid70/Xamarin.Essentials.dll",
+        "lib/monoandroid70/Xamarin.Essentials.pdb",
+        "lib/monoandroid70/Xamarin.Essentials.xml",
         "lib/monoandroid71/Xamarin.Essentials.dll",
         "lib/monoandroid71/Xamarin.Essentials.pdb",
         "lib/monoandroid71/Xamarin.Essentials.xml",
@@ -904,9 +911,11 @@
         "lib/monoandroid80/Xamarin.Essentials.pdb",
         "lib/monoandroid80/Xamarin.Essentials.xml",
         "lib/monoandroid81/Xamarin.Essentials.dll",
-        "lib/monoandroid81/Xamarin.Essentials.dll.mdb",
         "lib/monoandroid81/Xamarin.Essentials.pdb",
         "lib/monoandroid81/Xamarin.Essentials.xml",
+        "lib/monoandroid90/Xamarin.Essentials.dll",
+        "lib/monoandroid90/Xamarin.Essentials.pdb",
+        "lib/monoandroid90/Xamarin.Essentials.xml",
         "lib/netstandard1.0/Xamarin.Essentials.dll",
         "lib/netstandard1.0/Xamarin.Essentials.pdb",
         "lib/netstandard1.0/Xamarin.Essentials.xml",
@@ -921,14 +930,14 @@
         "lib/xamarinios10/Xamarin.Essentials.pdb",
         "lib/xamarinios10/Xamarin.Essentials.xml",
         "readme.txt",
-        "xamarin.essentials.1.0.1.nupkg.sha512",
+        "xamarin.essentials.1.1.0.nupkg.sha512",
         "xamarin.essentials.nuspec"
       ]
     },
-    "Xamarin.Forms/3.6.0.220655": {
-      "sha512": "vpPeq+GpNGj9uAyHjzeaPtPPAHxajanj2ct7ZqQ1RXGUlthi/yK5nnmyv9L/IGQ3fzgU28PBID7yQL13P3bGig==",
+    "Xamarin.Forms/4.0.0.250467-pre7": {
+      "sha512": "tKww2K0L1K9ttn32Qdd98b9Z2+H49adTQ8xI34jkPFdPhiZ61a1efgYsuWYRN2vENNzCovhI0CiPBTeEQ2Eong==",
       "type": "package",
-      "path": "xamarin.forms/3.6.0.220655",
+      "path": "xamarin.forms/4.0.0.250467-pre7",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1086,7 +1095,7 @@
         "lib/uap10.0/Xamarin.Forms.Xaml.dll",
         "lib/uap10.0/Xamarin.Forms.Xaml.pdb",
         "lib/uap10.0/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.3.6.0.220655.nupkg.sha512",
+        "xamarin.forms.4.0.0.250467-pre7.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     },
@@ -1106,33 +1115,30 @@
       "Xamarin.Android.Support.v7.AppCompat >= 28.0.0.1",
       "Xamarin.Android.Support.v7.CardView >= 28.0.0.1",
       "Xamarin.Android.Support.v7.MediaRouter >= 28.0.0.1",
-      "Xamarin.Essentials >= 1.0.1",
-      "Xamarin.Forms >= 3.6.0.220655"
+      "Xamarin.Essentials >= 1.1.0",
+      "Xamarin.Forms >= 4.0.0.250467-pre7"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\admin\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\iTrice\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\JZXY.Duoke.Android.csproj",
+      "projectUniqueName": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\JZXY.Duoke.Android.csproj",
       "projectName": "JZXY.Duoke.Android",
-      "projectPath": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\JZXY.Duoke.Android.csproj",
-      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\obj\\",
+      "projectPath": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\JZXY.Duoke.Android.csproj",
+      "packagesPath": "C:\\Users\\iTrice\\.nuget\\packages\\",
+      "outputPath": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files (x86)\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\iTrice\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1145,8 +1151,8 @@
       "frameworks": {
         "monoandroid81": {
           "projectReferences": {
-            "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj": {
-              "projectPath": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj"
+            "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj": {
+              "projectPath": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj"
             }
           }
         }
@@ -1185,11 +1191,11 @@
           },
           "Xamarin.Essentials": {
             "target": "Package",
-            "version": "[1.0.1, )"
+            "version": "[1.1.0, )"
           },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[3.6.0.220655, )"
+            "version": "[4.0.0.250467-pre7, )"
           }
         }
       }

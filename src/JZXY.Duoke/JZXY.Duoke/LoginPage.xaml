@@ -9,13 +9,13 @@
                 <Label Text="多可文档管理终端" FontSize="Large" HorizontalOptions="Center" TextColor="LightYellow" />
                 <Label Text="地址" TextColor="White"
                 VerticalOptions="Start"></Label>
-                <Entry x:Name="address" TextColor="White"></Entry>
+                <Entry x:Name="address" TextColor="White" Text="jzxy.f3322.net:8091"></Entry>
                 <Label Text="账号" TextColor="White"
                 VerticalOptions="Start"></Label>
-                <Entry x:Name="loginID" TextColor="White"></Entry>
+                <Entry x:Name="loginID" TextColor="White" Text="yifei"></Entry>
                 <Label Text="密码" TextColor="White"
                 VerticalOptions="Start"></Label>
-                <Entry x:Name="loginPwd" TextColor="White"></Entry>
+                <Entry x:Name="loginPwd" TextColor="White" Text="jzxy@502"></Entry>
                 <Button Text="登录" Clicked="Button_Clicked" TextColor="White"></Button>
             </StackLayout>
         </AbsoluteLayout>

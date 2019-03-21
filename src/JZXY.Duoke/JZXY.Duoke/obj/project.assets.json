@@ -466,29 +466,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\admin\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\iTrice\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj",
+      "projectUniqueName": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj",
       "projectName": "JZXY.Duoke",
-      "projectPath": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj",
-      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\obj\\",
+      "projectPath": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj",
+      "packagesPath": "C:\\Users\\iTrice\\.nuget\\packages\\",
+      "outputPath": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files (x86)\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\iTrice\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -496,13 +493,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://dotnetfeed.blob.core.windows.net/aspnet-aspnetcore-tooling/index.json": {},
-        "https://dotnetfeed.blob.core.windows.net/aspnet-aspnetcore/index.json": {},
-        "https://dotnetfeed.blob.core.windows.net/aspnet-entityframeworkcore/index.json": {},
-        "https://dotnetfeed.blob.core.windows.net/aspnet-extensions/index.json": {},
-        "https://dotnetfeed.blob.core.windows.net/dotnet-core/index.json": {},
-        "https://dotnetfeed.blob.core.windows.net/dotnet-windowsdesktop/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
