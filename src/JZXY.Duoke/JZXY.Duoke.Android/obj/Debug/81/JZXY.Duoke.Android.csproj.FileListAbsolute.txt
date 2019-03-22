@@ -213,7 +213,7 @@ E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\8
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\stamp\_CopyMdbFiles.stamp
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\stamp\_CopyPdbFiles.stamp
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\stamp\_ResolveLibraryProjectImports.stamp
+E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\JZXY.Duoke.Android.csprojAssemblyReference.cache
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\android\assets\machine.config
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\stamp\_CompileToDalvik.stamp
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\stamp\_GeneratePackageManagerJava.stamp
-E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\JZXY.Duoke.Android.csprojAssemblyReference.cache

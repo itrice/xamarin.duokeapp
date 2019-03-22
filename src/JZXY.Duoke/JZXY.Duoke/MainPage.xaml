@@ -5,8 +5,12 @@
              x:Class="JZXY.Duoke.MainPage">
 
     <StackLayout>
-        <ListView>
-            
+        <ListView x:Name="listView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Tapped="TextCell_Tapped" Text="{Binding Name}" Detail="{Binding Id}"></TextCell>
+                </DataTemplate>                
+            </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
 
