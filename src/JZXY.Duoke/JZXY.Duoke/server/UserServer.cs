@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace JZXY.Duoke.server
+namespace JZXY.Duoke.Server
 {
     /// <summary>
     /// 定义一个用户服务

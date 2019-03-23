@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Xml;
 
-namespace JZXY.Duoke.server
+namespace JZXY.Duoke.Server
 {
     public class DuokeServer
     {
@@ -15,11 +16,20 @@ namespace JZXY.Duoke.server
 
         private string HashKey { get; set; }
 
-
         /// <summary>
         /// 服务器地址
         /// </summary>
         private string IPAddress { get; set; }
+
+        /// <summary>
+        /// 根节点路径
+        /// </summary>
+        public string Root => Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+        /// <summary>
+        /// 保存路径
+        /// </summary>
+        private string _savePath;
 
         public static DuokeServer Instance { get; private set; }
 
@@ -39,6 +49,7 @@ namespace JZXY.Duoke.server
                 return false;
             }
             HashKey = resptxt;
+            _savePath = loginId;
             return true;
         }
 
@@ -75,8 +86,7 @@ namespace JZXY.Duoke.server
             }
             return fileModels;
         }
-
-
+        
         public List<FileModel> GetFiles(string ownderid, string floderid = "0")
         {
             var fileModels = new List<FileModel>();
@@ -131,6 +141,7 @@ namespace JZXY.Duoke.server
                 foreach (XmlNode folder in folders)
                 {
                     var name = folder.Attributes["Name"].Value;
+                    var path = CreateFolder(name);
                     var p = new FileModel()
                     {
                         Name = name,
@@ -139,12 +150,15 @@ namespace JZXY.Duoke.server
                     var fileItems = folder.FirstChild;
                     foreach (XmlNode item in fileItems.ChildNodes)
                     {
-                        p.Children.Add(new FileModel
+                        var fileModel = new FileModel
                         {
+                            Id = item.Attributes["FileKey"].Value,
                             Name = item.Attributes["Name"].Value,
                             Type = 1,
                             Size = item.Attributes["Size"].Value,
-                        });
+                        };
+                        fileModel.FilePath = Download(fileModel.Id, path);
+                        p.Children.Add(fileModel);
                     }
                     // subfolder
                     var subfolders = folder.LastChild;
@@ -159,9 +173,54 @@ namespace JZXY.Duoke.server
             return fileModels;
         }
 
-        public void Download(string filepath)
+        private string Download(string fileId,string relatePath)
         {
-            throw new NotImplementedException();
+            string url = IPAddress + "//?opr=download&filekey=" + fileId + "&hash2=" + HashKey;
+            Uri downUri = new Uri(url);
+
+            System.Net.HttpWebRequest myReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(downUri);
+            System.Net.HttpWebResponse myResp = (System.Net.HttpWebResponse)myReq.GetResponse();
+
+            string head = myResp.GetResponseHeader("Content-Disposition");
+            if (head.Trim() == "")
+            {
+                return "";
+            }
+
+            int headst = head.IndexOf("filename=\"");
+            int headend = head.IndexOf("\"", headst + 10);
+            string filename = head.Substring(headst + 10, headend - (headst + 10));
+            filename = System.Web.HttpUtility.UrlDecode(filename);
+
+            var filepath = Path.Combine(relatePath, filename);
+            
+            using (Stream stream = myReq.GetResponse().GetResponseStream())
+            {
+                using (FileStream fs = File.Create(@filepath))
+                {
+                    byte[] bytes = new byte[102400];
+
+                    int n = 1;
+
+                    while (n > 0)
+                    {
+                        n = stream.Read(bytes, 0, 10240);
+
+                        fs.Write(bytes, 0, n);             
+                    }
+
+                    fs.Flush();
+                    fs.Close();
+                }
+            }
+            return filepath;
+        }
+
+        private string CreateFolder(string folderName)
+        {
+            var path = Path.Combine(Root, folderName);
+            Directory.CreateDirectory(path);
+            return path;
         }
 
         private string GetHttp(string a_strUrl, int timeout)

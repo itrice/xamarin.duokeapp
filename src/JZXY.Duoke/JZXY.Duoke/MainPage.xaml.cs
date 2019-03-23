@@ -5,7 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using JZXY.Duoke.server;
+using System.IO;
+using JZXY.Duoke.Server;
+using Xamarin.Essentials;
+using System.Diagnostics;
 
 namespace JZXY.Duoke
 {
@@ -16,10 +19,14 @@ namespace JZXY.Duoke
     {
         private List<FileModel> _source;
 
+        private string _currentPath = DuokeServer.Instance.Root;
+
+        private JZXY.Duoke.Interface.IDocumentViewer _docViewer = DependencyService.Get<Interface.IDocumentViewer>();
+
         public MainPage()
         {
             InitializeComponent();
-            LoadData();
+            LoadData(_currentPath);
             BindData();
         }
 
@@ -29,15 +36,27 @@ namespace JZXY.Duoke
             lst.ItemsSource = _source;
         }
 
-        private void LoadData()
+        /// <summary>
+        /// 加载本地文件
+        /// </summary>
+        private void LoadData(string path)
         {
-            var files = DuokeServer.Instance.GetDoucuments();
+            var files = Directory.GetFiles(path);
             _source = new List<FileModel>();
-            // 重组文件集合
-            foreach (var item in files)
+            foreach (var file in files)
             {
-                _source.AddRange(GetFiles(item));
+                _source.Add(new FileModel
+                {
+                    Name = file
+                });
             }
+            //var files = DuokeServer.Instance.GetDoucuments();
+            //_source = new List<FileModel>();
+            //// 重组文件集合
+            //foreach (var item in files)
+            //{
+            //    _source.AddRange(GetFiles(item));
+            //}
             //_source.Add(new FileModel
             //{
             //    Name = "测试文件.doc", Size = "100kb"               
@@ -65,7 +84,42 @@ namespace JZXY.Duoke
         private void TextCell_Tapped(object sender, EventArgs e)
         {
             var cell = sender as TextCell;
-            DisplayAlert(cell.Text, cell.Detail, "确定");
+            if(cell != null)
+            {
+                if(cell.Detail == "0")
+                {
+                    _currentPath = Path.Combine(_currentPath, cell.Text);
+                    LoadData(_currentPath);
+                    BindData();
+                }
+                else
+                {
+                    var filePath = cell.Text;
+                    var mimeType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+
+                    switch (Path.GetExtension(filePath).ToLower())
+                    {
+                        case ".pdf":
+                            mimeType = "application/pdf";
+                            break;
+                        case ".png":
+                            mimeType = "image/png";
+                            break;
+                        case ".jpg":
+                            mimeType = "image/jpg";
+                            break;
+                    }
+
+                    try
+                    {
+                        _docViewer.ShowDocumentFile(filePath, mimeType);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.Message);
+                    }
+                }
+            }
         }
     }
 }

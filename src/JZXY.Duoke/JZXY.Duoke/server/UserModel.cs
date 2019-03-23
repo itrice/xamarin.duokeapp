@@ -1,4 +1,4 @@
-﻿namespace JZXY.Duoke.server
+﻿namespace JZXY.Duoke.Server
 {
     /// <summary>
     /// 定义一个用户模型

@@ -70,7 +70,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DocumentViewer.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Messager.cs" />
+    <Compile Include="NetworkServer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

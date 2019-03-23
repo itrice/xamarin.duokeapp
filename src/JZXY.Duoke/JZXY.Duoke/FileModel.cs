@@ -27,6 +27,11 @@ namespace JZXY.Duoke
         /// </summary>
         public int Type { get; set; }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        public string FilePath { get; set; }
+
 
         public List<FileModel> Children { get; set; }
     }
