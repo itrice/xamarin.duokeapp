@@ -8,30 +8,46 @@ namespace JZXY.Duoke.Server
 {
     public class DuokeServer
     {
-        static DuokeServer()
-        {
-            Instance = new DuokeServer();
-        }
+        #region 变量
+        
         private readonly int _outtime = 3000;
 
-        private string HashKey { get; set; }
+        private static string _loginId;
+
+        #endregion
+
+        #region 属性
+
+        private static string HashKey { get; set; }
+        
 
         /// <summary>
         /// 服务器地址
         /// </summary>
-        private string IPAddress { get; set; }
+        private static string IPAddress { get; set; }
+
+        private string Root
+        {
+            get
+            {
+                return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            }
+        }
+
+        #endregion
+
+        #region Events
 
         /// <summary>
-        /// 根节点路径
+        /// 
         /// </summary>
-        public string Root => Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        public event Action<string, int> ProcessOn;
 
-        /// <summary>
-        /// 保存路径
-        /// </summary>
-        private string _savePath;
+        public event Action ProcessDone;
 
-        public static DuokeServer Instance { get; private set; }
+        #endregion
+
+        #region 方法
 
         /// <summary>
         ///
@@ -49,8 +65,9 @@ namespace JZXY.Duoke.Server
                 return false;
             }
             HashKey = resptxt;
-            _savePath = loginId;
+            _loginId = loginId;
             return true;
+
         }
 
         /// <summary>
@@ -70,6 +87,7 @@ namespace JZXY.Duoke.Server
         public List<FileModel> GetDoucuments()
         {
             var orgXmlStr = GetOrg();
+            ProcessOn?.BeginInvoke("获取组织结构", 0, null, null);
             var xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(orgXmlStr);
             var groupItems = xmlDoc.SelectNodes("//GroupItem");
@@ -86,7 +104,7 @@ namespace JZXY.Duoke.Server
             }
             return fileModels;
         }
-        
+
         public List<FileModel> GetFiles(string ownderid, string floderid = "0")
         {
             var fileModels = new List<FileModel>();
@@ -150,6 +168,7 @@ namespace JZXY.Duoke.Server
                     var fileItems = folder.FirstChild;
                     foreach (XmlNode item in fileItems.ChildNodes)
                     {
+                        ProcessOn?.BeginInvoke($"获取文件:{item.Attributes["Name"].Value}", 0, null, null);
                         var fileModel = new FileModel
                         {
                             Id = item.Attributes["FileKey"].Value,
@@ -165,7 +184,7 @@ namespace JZXY.Duoke.Server
                     foreach (XmlNode item in subfolders)
                     {
                         var sid = item.Attributes["Id"].Value;
-                        p.Children.AddRange(GetFiles(ownderid,sid));
+                        p.Children.AddRange(GetFiles(ownderid, sid));
                     }
                     fileModels.Add(p);
                 }
@@ -173,9 +192,10 @@ namespace JZXY.Duoke.Server
             return fileModels;
         }
 
-        private string Download(string fileId,string relatePath)
+        private string Download(string fileId, string relatePath)
         {
             string url = IPAddress + "//?opr=download&filekey=" + fileId + "&hash2=" + HashKey;
+            return url;
             Uri downUri = new Uri(url);
 
             System.Net.HttpWebRequest myReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(downUri);
@@ -193,7 +213,7 @@ namespace JZXY.Duoke.Server
             filename = System.Web.HttpUtility.UrlDecode(filename);
 
             var filepath = Path.Combine(relatePath, filename);
-            
+
             using (Stream stream = myReq.GetResponse().GetResponseStream())
             {
                 using (FileStream fs = File.Create(@filepath))
@@ -206,7 +226,7 @@ namespace JZXY.Duoke.Server
                     {
                         n = stream.Read(bytes, 0, 10240);
 
-                        fs.Write(bytes, 0, n);             
+                        fs.Write(bytes, 0, n);
                     }
 
                     fs.Flush();
@@ -218,7 +238,7 @@ namespace JZXY.Duoke.Server
 
         private string CreateFolder(string folderName)
         {
-            var path = Path.Combine(Root, folderName);
+            var path = Path.Combine(Root, _loginId, folderName);
             Directory.CreateDirectory(path);
             return path;
         }
@@ -248,5 +268,6 @@ namespace JZXY.Duoke.Server
             }
         }
 
+        #endregion
     }
 }

@@ -20,6 +20,8 @@ namespace JZXY.Duoke
         public LoginPage()
         {
             InitializeComponent();
+            var imgBackground = FindByName("imgBackground") as Image;
+            imgBackground.Source = ImageSource.FromResource("JZXY.Duoke.bg.jpg");
         }
 
         /// <summary>
@@ -51,8 +53,9 @@ namespace JZXY.Duoke
             var isConnected = CheckNetworkConnection();
             if (isConnected)
             {
-                string AUrl = "http://" + ip.Text.Trim() + "";
-                bool rst = DuokeServer.Instance.Login(AUrl, loginId.Text.Trim(), loginPwd.Text.Trim());
+                string AUrl = ip.Text.Trim() + "";
+                var duokeServer = new DuokeServer();
+                bool rst = duokeServer.Login(AUrl, loginId.Text.Trim(), loginPwd.Text.Trim());
                 if (rst)
                 {
                     App.Current.MainPage = new UpdateDataPage();

@@ -6,10 +6,14 @@ namespace JZXY.Duoke
 {
     public partial class App : Application
     {
+        /// <summary>
+        /// 根节点路径
+        /// </summary>
+        public string Root => Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
         public App()
         {
             InitializeComponent();
-
             MainPage = new LoginPage();
         }
 

@@ -19,13 +19,14 @@ namespace JZXY.Duoke
     {
         private List<FileModel> _source;
 
-        private string _currentPath = DuokeServer.Instance.Root;
+        private string _currentPath;
 
         private JZXY.Duoke.Interface.IDocumentViewer _docViewer = DependencyService.Get<Interface.IDocumentViewer>();
 
         public MainPage()
         {
             InitializeComponent();
+            _currentPath = (App.Current as App).Root;
             LoadData(_currentPath);
             BindData();
         }
