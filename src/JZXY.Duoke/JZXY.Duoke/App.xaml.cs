@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JZXY.Duoke.Server;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,9 +8,9 @@ namespace JZXY.Duoke
     public partial class App : Application
     {
         /// <summary>
-        /// 根节点路径
+        /// 
         /// </summary>
-        public string Root => Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        public UserModel CurrentUser { get; set; }
 
         public App()
         {

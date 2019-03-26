@@ -10,7 +10,7 @@ namespace JZXY.Duoke.Server
     {
         #region 变量
         
-        private readonly int _outtime = 3000;
+        private readonly int _outtime = 30000;
 
         private static string _loginId;
 
@@ -59,7 +59,7 @@ namespace JZXY.Duoke.Server
         {
             IPAddress = address;
             var url = IPAddress + "/ufInterface?opr=getHash&name=" + loginId + "&password=" + password;
-            var resptxt = GetHttp(url, 3000);
+            var resptxt = GetHttp(url, _outtime);
             if (string.IsNullOrEmpty(resptxt) || resptxt.Contains("错误"))
             {
                 return false;
@@ -67,7 +67,6 @@ namespace JZXY.Duoke.Server
             HashKey = resptxt;
             _loginId = loginId;
             return true;
-
         }
 
         /// <summary>
@@ -165,7 +164,7 @@ namespace JZXY.Duoke.Server
                         Name = name,
                         Type = 0,
                     };
-                    var fileItems = folder.FirstChild;
+                    var fileItems = folder.SelectSingleNode("FileItems");
                     foreach (XmlNode item in fileItems.ChildNodes)
                     {
                         ProcessOn?.BeginInvoke($"获取文件:{item.Attributes["Name"].Value}", 0, null, null);
@@ -176,11 +175,13 @@ namespace JZXY.Duoke.Server
                             Type = 1,
                             Size = item.Attributes["Size"].Value,
                         };
+
+                        System.Diagnostics.Debugger.Log(0, "dwonload", item.Attributes["Name"].Value);
                         fileModel.FilePath = Download(fileModel.Id, path);
                         p.Children.Add(fileModel);
                     }
-                    // subfolder
-                    var subfolders = folder.LastChild;
+                    // subfolder 
+                    var subfolders = folder.SelectSingleNode("SubFolders");
                     foreach (XmlNode item in subfolders)
                     {
                         var sid = item.Attributes["Id"].Value;
@@ -194,13 +195,11 @@ namespace JZXY.Duoke.Server
 
         private string Download(string fileId, string relatePath)
         {
-            string url = IPAddress + "//?opr=download&filekey=" + fileId + "&hash2=" + HashKey;
-            return url;
+            string url = IPAddress + "/ufInterface?opr=download&filekey=" + fileId + "&hash2=" + HashKey;
             Uri downUri = new Uri(url);
 
             System.Net.HttpWebRequest myReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(downUri);
             System.Net.HttpWebResponse myResp = (System.Net.HttpWebResponse)myReq.GetResponse();
-
             string head = myResp.GetResponseHeader("Content-Disposition");
             if (head.Trim() == "")
             {
@@ -233,6 +232,7 @@ namespace JZXY.Duoke.Server
                     fs.Close();
                 }
             }
+            System.Diagnostics.Debugger.Log(0, fileId, filepath);
             return filepath;
         }
 
@@ -259,8 +259,6 @@ namespace JZXY.Duoke.Server
                     sb.AppendLine(sr.ReadLine());
                 }
                 return sb.ToString();
-
-
             }
             catch (Exception exp)
             {

@@ -4,7 +4,10 @@
              xmlns:local="clr-namespace:JZXY.Duoke"
              x:Class="JZXY.Duoke.MainPage">
 
-    <StackLayout>
+    <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="文件界面"></Label>
+        </StackLayout>
         <ListView x:Name="listView">
             <ListView.ItemTemplate>
                 <DataTemplate>

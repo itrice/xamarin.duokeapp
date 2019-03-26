@@ -19,14 +19,18 @@ namespace JZXY.Duoke
     {
         private List<FileModel> _source;
 
-        private string _currentPath;
+        private UserModel _userModel;
 
         private JZXY.Duoke.Interface.IDocumentViewer _docViewer = DependencyService.Get<Interface.IDocumentViewer>();
+
+        private string _currentPath;
 
         public MainPage()
         {
             InitializeComponent();
-            _currentPath = (App.Current as App).Root;
+            _userModel = (App.Current as App).CurrentUser;
+
+            _currentPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), _userModel.LoginId);
             LoadData(_currentPath);
             BindData();
         }
@@ -42,26 +46,29 @@ namespace JZXY.Duoke
         /// </summary>
         private void LoadData(string path)
         {
-            var files = Directory.GetFiles(path);
             _source = new List<FileModel>();
+            var files = Directory.GetFiles(path, ".", SearchOption.AllDirectories);
             foreach (var file in files)
+            {
+                var fi = new FileInfo(file);     
+                _source.Add(new FileModel
+                {
+                    Name = fi.Name,
+                    FilePath = file,
+                    Size = file,
+                    Type = 1
+                });
+            }
+            var folders = Directory.GetDirectories(path);
+            foreach (var file in folders)
             {
                 _source.Add(new FileModel
                 {
-                    Name = file
+                    Name = file,
+                    FilePath = file,
+                    Type = 0
                 });
             }
-            //var files = DuokeServer.Instance.GetDoucuments();
-            //_source = new List<FileModel>();
-            //// 重组文件集合
-            //foreach (var item in files)
-            //{
-            //    _source.AddRange(GetFiles(item));
-            //}
-            //_source.Add(new FileModel
-            //{
-            //    Name = "测试文件.doc", Size = "100kb"               
-            //});
         }
 
         private List<FileModel> GetFiles(FileModel file)
@@ -103,12 +110,12 @@ namespace JZXY.Duoke
                         case ".pdf":
                             mimeType = "application/pdf";
                             break;
-                        case ".png":
-                            mimeType = "image/png";
-                            break;
-                        case ".jpg":
-                            mimeType = "image/jpg";
-                            break;
+                        //case ".png":
+                        //    mimeType = "image/png";
+                        //    break;
+                        //case ".jpg":
+                        //    mimeType = "image/jpg";
+                        //    break;
                     }
 
                     try

@@ -3,7 +3,7 @@
     /// <summary>
     /// 定义一个用户模型
     /// </summary>
-    class UserModel
+    public class UserModel
     {
         public string LoginId { get; set; }
 

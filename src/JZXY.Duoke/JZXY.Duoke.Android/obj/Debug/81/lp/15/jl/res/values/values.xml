@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="notification_material_background_media_default_color">#ff424242</color>
-    <color name="primary_text_default_material_dark">#ffffffff</color>
-    <color name="secondary_text_default_material_dark">#b3ffffff</color>
-    <integer name="cancel_button_image_alpha">127</integer>
-    <style name="TextAppearance.Compat.Notification.Info.Media"/>
-    <style name="TextAppearance.Compat.Notification.Line2.Media" parent="TextAppearance.Compat.Notification.Info.Media"/>
-    <style name="TextAppearance.Compat.Notification.Media"/>
-    <style name="TextAppearance.Compat.Notification.Time.Media"/>
-    <style name="TextAppearance.Compat.Notification.Title.Media"/>
+    <item name="ghost_view" type="id"/>
+    <item name="parent_matrix" type="id"/>
+    <item name="save_image_matrix" type="id"/>
+    <item name="save_non_transition_alpha" type="id"/>
+    <item name="save_scale_type" type="id"/>
+    <item name="transition_current_scene" type="id"/>
+    <item name="transition_layout_save" type="id"/>
+    <item name="transition_position" type="id"/>
+    <item name="transition_scene_layoutid_cache" type="id"/>
+    <item name="transition_transform" type="id"/>
 </resources>

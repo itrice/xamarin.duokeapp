@@ -50,12 +50,16 @@ namespace JZXY.Duoke
                 DisplayAlert("提示", "请填入必要信息", "确定");
                 return;
             }
+            string AUrl = ip.Text.Trim() + "";
+            var duokeServer = new DuokeServer();
+            var user = new UserModel();
+            user.LoginId = loginId.Text.Trim();
+            user.LoginPwd = loginPwd.Text.Trim();
+            (App.Current as App).CurrentUser = user;
             var isConnected = CheckNetworkConnection();
             if (isConnected)
             {
-                string AUrl = ip.Text.Trim() + "";
-                var duokeServer = new DuokeServer();
-                bool rst = duokeServer.Login(AUrl, loginId.Text.Trim(), loginPwd.Text.Trim());
+                bool rst = duokeServer.Login(AUrl, user.LoginId, user.LoginPwd);
                 if (rst)
                 {
                     App.Current.MainPage = new UpdateDataPage();
