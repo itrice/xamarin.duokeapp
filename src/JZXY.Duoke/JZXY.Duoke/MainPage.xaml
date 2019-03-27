@@ -11,7 +11,7 @@
         <ListView x:Name="listView">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Tapped="TextCell_Tapped" Text="{Binding Name}" Detail="{Binding Type}"></TextCell>
+                    <TextCell Tapped="TextCell_Tapped" Text="{Binding FilePath}" Detail="{Binding Name}"></TextCell>
                 </DataTemplate>                
             </ListView.ItemTemplate>
         </ListView>

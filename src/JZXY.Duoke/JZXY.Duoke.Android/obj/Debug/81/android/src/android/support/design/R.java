@@ -4108,7 +4108,8 @@ containing a value of this type.
         public static int Widget_MediaRouter_MediaRouteButton=0x7f0d000a;
     }
     public static final class xml {
-        public static int xamarin_essentials_fileprovider_file_paths=0x7f080000;
+        public static int provider_paths=0x7f080000;
+        public static int xamarin_essentials_fileprovider_file_paths=0x7f080001;
     }
     public static final class styleable {
         /** Attributes that can be used with a ActionBar.

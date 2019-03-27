@@ -50,12 +50,12 @@ namespace JZXY.Duoke
             var files = Directory.GetFiles(path, ".", SearchOption.AllDirectories);
             foreach (var file in files)
             {
-                var fi = new FileInfo(file);     
+                var fi = new FileInfo(file);
                 _source.Add(new FileModel
                 {
                     Name = fi.Name,
                     FilePath = file,
-                    Size = file,
+                    Size = fi.Length + " byte",
                     Type = 1
                 });
             }
@@ -92,9 +92,9 @@ namespace JZXY.Duoke
         private void TextCell_Tapped(object sender, EventArgs e)
         {
             var cell = sender as TextCell;
-            if(cell != null)
+            if (cell != null)
             {
-                if(cell.Detail == "0")
+                if (cell.Detail == "0")
                 {
                     _currentPath = Path.Combine(_currentPath, cell.Text);
                     LoadData(_currentPath);
@@ -103,20 +103,25 @@ namespace JZXY.Duoke
                 else
                 {
                     var filePath = cell.Text;
-                    var mimeType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                    var mimeType = GetMIMEType(Path.GetExtension(filePath).ToLower());
+                    //"application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
-                    switch (Path.GetExtension(filePath).ToLower())
-                    {
-                        case ".pdf":
-                            mimeType = "application/pdf";
-                            break;
-                        //case ".png":
-                        //    mimeType = "image/png";
-                        //    break;
-                        //case ".jpg":
-                        //    mimeType = "image/jpg";
-                        //    break;
-                    }
+                    //switch (Path.GetExtension(filePath).ToLower())
+                    //{
+                    //    case ".bmp":
+                    //        mimeType = "image/bmp";
+                    //        break;
+                    //    case ".pdf":
+                    //        mimeType = "application/pdf";
+                    //        break;
+                    //    case ".png":
+                    //    case ".jpg":
+                    //        mimeType = "image/jpeg";
+                    //        break;
+                    //    default:
+                    //        mimeType = "*/*";
+                    //        break;
+                    //}
 
                     try
                     {
@@ -129,5 +134,87 @@ namespace JZXY.Duoke
                 }
             }
         }
+
+        private string GetMIMEType(string filePath)
+        {
+            string type = "*/*";
+            if (filePath == "") return type;
+            //from MIME_MapTable to get the respond type  
+            for (int i = 0; i < MIME_MapTable.Length / 2; i++)
+            {
+                if (filePath.Equals(MIME_MapTable[i, 0]))
+                    type = MIME_MapTable[i, 1];
+            }
+            return type;
+        }
+
+        public string[,] MIME_MapTable = new string[,] {
+
+            {".3gp",    "video/3gpp"},
+            {".apk",    "application/vnd.android.package-archive"},
+            {".asf",    "video/x-ms-asf"},
+            {".avi",    "video/x-msvideo"},
+            {".bin",    "application/octet-stream"},
+            {".bmp",      "image/bmp"},
+            {".c",        "text/plain"},
+            {".class",    "application/octet-stream"},
+            {".conf",    "text/plain"},
+            {".cpp",    "text/plain"},
+            {".doc",    "application/msword"},
+            {".exe",    "application/octet-stream"},
+            {".gif",    "image/gif"},
+            {".gtar",    "application/x-gtar"},
+            {".gz",        "application/x-gzip"},
+            {".h",        "text/plain"},
+            {".htm",    "text/html"},
+            {".html",    "text/html"},
+            {".jar",    "application/java-archive"},
+            {".java",    "text/plain"},
+            {".jpeg",    "image/jpeg"},
+            {".jpg",    "image/jpeg"},
+            {".js",        "application/x-javascript"},
+            {".log",    "text/plain"},
+            {".m3u",    "audio/x-mpegurl"},
+            {".m4a",    "audio/mp4a-latm"},
+            {".m4b",    "audio/mp4a-latm"},
+            {".m4p",    "audio/mp4a-latm"},
+            {".m4u",    "video/vnd.mpegurl"},
+            {".m4v",    "video/x-m4v"},
+            {".mov",    "video/quicktime"},
+            {".mp2",    "audio/x-mpeg"},
+            {".mp3",    "audio/x-mpeg"},
+            {".mp4",    "video/mp4"},
+            {".mpc",    "application/vnd.mpohun.certificate"},
+            {".mpe",    "video/mpeg"},
+            {".mpeg",    "video/mpeg"},
+            {".mpg",    "video/mpeg"},
+            {".mpg4",    "video/mp4"},
+            {".mpga",    "audio/mpeg"},
+            {".msg",    "application/vnd.ms-outlook"},
+            {".ogg",    "audio/ogg"},
+            {".pdf",    "application/pdf"},
+            {".png",    "image/png"},
+            {".pps",    "application/vnd.ms-powerpoint"},
+            {".ppt",    "application/vnd.ms-powerpoint"},
+            {".prop",    "text/plain"},
+            {".rar",    "application/x-rar-compressed"},
+            {".rc",        "text/plain"},
+            {".rmvb",    "audio/x-pn-realaudio"},
+            {".rtf",    "application/rtf"},
+            {".sh",        "text/plain"},
+            {".tar",    "application/x-tar"},
+            {".tgz",    "application/x-compressed"},
+            {".txt",    "text/plain"},
+            {".wav",    "audio/x-wav"},
+            {".wma",    "audio/x-ms-wma"},
+            {".wmv",    "audio/x-ms-wmv"},
+            {".wps",    "application/vnd.ms-works"},  
+            //{".xml",    "text/xml"},  
+            {".xml",    "text/plain"},
+            {".z",        "application/x-compress"},
+            {".zip",    "application/zip"},
+            {"",        "*/*"}
+
+    };
     }
 }

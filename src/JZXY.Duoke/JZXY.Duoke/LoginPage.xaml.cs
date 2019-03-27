@@ -57,6 +57,7 @@ namespace JZXY.Duoke
             user.LoginPwd = loginPwd.Text.Trim();
             (App.Current as App).CurrentUser = user;
             var isConnected = CheckNetworkConnection();
+            isConnected = false;
             if (isConnected)
             {
                 bool rst = duokeServer.Login(AUrl, user.LoginId, user.LoginPwd);

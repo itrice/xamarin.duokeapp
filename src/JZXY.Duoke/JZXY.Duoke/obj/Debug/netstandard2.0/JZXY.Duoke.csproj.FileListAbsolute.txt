@@ -25,4 +25,3 @@ E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstanda
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\JZXY.Duoke.csprojAssemblyReference.cache
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\UpdateDataPage.xaml.g.cs
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\UpdateDataPage.xaml.g.cs
-E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\JZXY.Duoke.csprojAssemblyReference.cache
