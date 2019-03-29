@@ -117,3 +117,4 @@ E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.iOS\obj\iPhoneSimul
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.iOS\obj\iPhoneSimulator\Debug\JZXY.Duoke.iOS.csproj.CopyComplete
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.iOS\obj\iPhoneSimulator\Debug\JZXY.Duoke.iOS.exe
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.iOS\obj\iPhoneSimulator\Debug\JZXY.Duoke.iOS.pdb
+E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.iOS\bin\iPhoneSimulator\Debug\JZXY.Duoke.dll.mdb

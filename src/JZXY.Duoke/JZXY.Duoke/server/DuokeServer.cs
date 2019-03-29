@@ -30,7 +30,7 @@ namespace JZXY.Duoke.Server
         {
             get
             {
-                return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                return "/storage/emulated/0/Download/"; // Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             }
         }
 

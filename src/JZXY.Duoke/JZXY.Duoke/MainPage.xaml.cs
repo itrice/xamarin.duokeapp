@@ -28,9 +28,9 @@ namespace JZXY.Duoke
         public MainPage()
         {
             InitializeComponent();
-            _userModel = (App.Current as App).CurrentUser;
-
-            _currentPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), _userModel.LoginId);
+            _userModel = (App.Current as App).CurrentUser;            
+            //_currentPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), _userModel.LoginId);
+            _currentPath = Path.Combine("/storage/emulated/0/Download/", _userModel.LoginId);
             LoadData(_currentPath);
             BindData();
         }
@@ -47,27 +47,33 @@ namespace JZXY.Duoke
         private void LoadData(string path)
         {
             _source = new List<FileModel>();
-            var files = Directory.GetFiles(path, ".", SearchOption.AllDirectories);
-            foreach (var file in files)
+            try
             {
-                var fi = new FileInfo(file);
-                _source.Add(new FileModel
+                var files = Directory.GetFiles(path, ".", SearchOption.AllDirectories);
+                foreach (var file in files)
                 {
-                    Name = fi.Name,
-                    FilePath = file,
-                    Size = fi.Length + " byte",
-                    Type = 1
-                });
+                    var fi = new FileInfo(file);
+                    _source.Add(new FileModel
+                    {
+                        Name = fi.Name,
+                        FilePath = file,
+                        Size = fi.Length + " byte",
+                        Type = 1
+                    });
+                }
+                var folders = Directory.GetDirectories(path);
+                foreach (var file in folders)
+                {
+                    _source.Add(new FileModel
+                    {
+                        Name = file,
+                        FilePath = file,
+                        Type = 0
+                    });
+                }
             }
-            var folders = Directory.GetDirectories(path);
-            foreach (var file in folders)
+            catch (Exception)
             {
-                _source.Add(new FileModel
-                {
-                    Name = file,
-                    FilePath = file,
-                    Type = 0
-                });
             }
         }
 

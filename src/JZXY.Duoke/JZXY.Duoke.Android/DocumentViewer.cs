@@ -30,8 +30,8 @@ namespace JZXY.Duoke.Droid
             //Java.IO.File file = new Java.IO.File(filepath);
             //var uri = FileProvider.GetUriForFile(Forms.Context.ApplicationContext, BuildConfig.ApplicationId, new Java.IO.File(filepath));            
             //var uri = Android.Net.Uri.Parse( "https://us.v-cdn.net/5019960/uploads/userpics/171/pQQ7DQ5VAJMJV.jpg");
-            var uri = Android.Net.Uri.Parse("content://" + filepath);
-            //var uri = Android.Net.Uri.Parse("file://" + filepath);
+            //var uri = Android.Net.Uri.Parse("content://" + filepath);
+            var uri = Android.Net.Uri.Parse("file://" + filepath);
             ////Device.OpenUri(new Uri(filepath));
             var intent = new Intent(Intent.ActionView);
             //var uri = null;
@@ -41,7 +41,7 @@ namespace JZXY.Duoke.Droid
 
             if (Build.VERSION.SdkInt >= Build.VERSION_CODES.N)
             {
-                uri = FileProvider.GetUriForFile(MainActivity.AppContext, MainActivity.AppContext.PackageName + ".provider", new Java.IO.File(filepath));
+                //uri = FileProvider.GetUriForFile(MainActivity.AppContext, MainActivity.AppContext.PackageName + ".provider", new Java.IO.File(filepath));
             }
 
             intent.SetDataAndType(uri, mimeType);
