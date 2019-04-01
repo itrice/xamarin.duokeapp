@@ -352,7 +352,6 @@ H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\D
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\android\assets\System.Numerics.Vectors.dll
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\android\assets\System.Numerics.Vectors.pdb
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\android\assets\System.pdb
-H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\android\assets\System.Runtime.dll
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\android\assets\System.Runtime.Serialization.dll
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\android\assets\System.Runtime.Serialization.pdb
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\android\assets\System.ServiceModel.Internals.dll
@@ -425,9 +424,6 @@ H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\D
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\R.cs.flag
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\R.txt
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\uploadflags.txt
-H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\android\assets\machine.config
-H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\stamp\_CompileToDalvik.stamp
-H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\stamp\_GeneratePackageManagerJava.stamp
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\bin\Debug\com.JZXY.Duoke.apk
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\bin\Debug\com.JZXY.Duoke-Signed.apk
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\android\bin\com.JZXY.Duoke.apk
@@ -439,3 +435,8 @@ E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\8
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\stamp\_CompileToDalvik.stamp
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\stamp\_GeneratePackageManagerJava.stamp
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\android\assets\System.Runtime.dll
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\res\xml\provider_paths.xml
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\android\assets\machine.config
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\stamp\_CompileToDalvik.stamp
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\stamp\_GeneratePackageManagerJava.stamp
+H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke.Android\obj\Debug\81\android\assets\System.Runtime.dll

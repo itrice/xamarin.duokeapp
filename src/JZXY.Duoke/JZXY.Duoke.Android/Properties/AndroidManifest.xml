@@ -3,7 +3,7 @@
   <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="27" />
   <application android:label="JZXY.Duoke.Android" android:icon="@mipmap/icon">
     <provider android:name="android.support.v4.content.FileProvider"
-              android:authorities="${applicationId}.provider"
+              android:authorities="com.jzxy.duoke.provider"
               android:exported="false"
               android:grantUriPermissions="true">
       <meta-data
@@ -11,7 +11,9 @@
           android:resource="@xml/provider_paths"/>
     </provider>
   </application>
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />  
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

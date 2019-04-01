@@ -7,5 +7,7 @@ namespace JZXY.Duoke.Interface
     public interface IDocumentViewer
     {
         void ShowDocumentFile(string filepath, string mimeType);
+
+        string GetRootPath();
     }
 }

@@ -2,5 +2,9 @@
 <paths xmlns:android="http://schemas.android.com/apk/res/android">  
   <!--<files-path name="files" path="."/>
   <files-path name="root" path="." />-->
-  <external-path path="/" name="root" />
+  <!--<external-path path="/" name="root" />-->
+  <root-path name="root" path="." />
+  <files-path name="files" path="." />
+  <cache-path name="cache" path="." />
+  <external-path name="external" path="." />
 </paths>

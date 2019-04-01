@@ -1,36 +1,52 @@
-﻿using System;
+﻿using JZXY.Duoke.Interface;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml;
+using Xamarin.Forms;
 
 namespace JZXY.Duoke.Server
 {
     public class DuokeServer
     {
         #region 变量
-        
+
         private readonly int _outtime = 30000;
 
         private static string _loginId;
 
+        private IDocumentViewer _documentViewer;
+
         #endregion
+
+        public DuokeServer()
+        {
+
+            _documentViewer = DependencyService.Get<Interface.IDocumentViewer>();
+        }
 
         #region 属性
 
         private static string HashKey { get; set; }
-        
 
         /// <summary>
         /// 服务器地址
         /// </summary>
         private static string IPAddress { get; set; }
 
+        private string root;
+
         private string Root
         {
             get
             {
-                return "/storage/emulated/0/Download/"; // Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                //if (string.IsNullOrEmpty(root))
+                //{
+                //    root = _documentViewer.GetRootPath();
+                //}
+                //return root;
+                return  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);// "/storage/emulated/0/Download/"; //
             }
         }
 
@@ -265,7 +281,7 @@ namespace JZXY.Duoke.Server
                 return "错误：" + exp.Message;
             }
         }
-
+        
         #endregion
     }
 }

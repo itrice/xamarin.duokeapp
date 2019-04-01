@@ -19,8 +19,7 @@ namespace JZXY.Duoke.Droid
             AppContext = ApplicationContext;
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
-
+            
             base.OnCreate(savedInstanceState);
 
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();

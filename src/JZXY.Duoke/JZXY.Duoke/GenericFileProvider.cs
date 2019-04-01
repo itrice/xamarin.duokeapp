@@ -4,7 +4,4 @@ using System.Text;
 
 namespace JZXY.Duoke
 {
-    class GenericFileProvider
-    {
-    }
 }

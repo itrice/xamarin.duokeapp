@@ -29,8 +29,9 @@ namespace JZXY.Duoke
         {
             InitializeComponent();
             _userModel = (App.Current as App).CurrentUser;            
-            //_currentPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), _userModel.LoginId);
-            _currentPath = Path.Combine("/storage/emulated/0/Download/", _userModel.LoginId);
+            //_currentPath = Path.Combine(_docViewer.GetRootPath(), _userModel.LoginId);
+            _currentPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), _userModel.LoginId);
+            //_currentPath = Path.Combine("/storage/emulated/0/Download/", _userModel.LoginId);
             LoadData(_currentPath);
             BindData();
         }
