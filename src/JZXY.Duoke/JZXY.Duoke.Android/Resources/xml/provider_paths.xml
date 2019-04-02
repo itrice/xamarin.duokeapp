@@ -5,6 +5,8 @@
   <!--<external-path path="/" name="root" />-->
   <root-path name="root" path="." />
   <files-path name="files" path="." />
+  <files-path name="com.JZXY.Duoke" path="." />
+  <files-path name="JZXY.Duoke" path="." />
   <cache-path name="cache" path="." />
   <external-path name="external" path="." />
 </paths>

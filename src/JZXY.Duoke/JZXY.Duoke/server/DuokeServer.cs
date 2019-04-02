@@ -35,18 +35,11 @@ namespace JZXY.Duoke.Server
         /// </summary>
         private static string IPAddress { get; set; }
 
-        private string root;
-
         private string Root
         {
             get
             {
-                //if (string.IsNullOrEmpty(root))
-                //{
-                //    root = _documentViewer.GetRootPath();
-                //}
-                //return root;
-                return  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);// "/storage/emulated/0/Download/"; //
+                return "/storage/emulated/0/jzxy";//Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);// "/storage/emulated/0/Download/"; //
             }
         }
 
@@ -114,13 +107,13 @@ namespace JZXY.Duoke.Server
                 {
                     continue;
                 }
-                var files = GetFiles(id);
+                var files = GetFiles(ownderid:id,floderName:item.Attributes["Name"].Value);
                 fileModels.AddRange(files);
             }
             return fileModels;
         }
 
-        public List<FileModel> GetFiles(string ownderid, string floderid = "0")
+        public List<FileModel> GetFiles(string ownderid, string floderid = "0", string floderName = "")
         {
             var fileModels = new List<FileModel>();
             if (ownderid == "0")
@@ -150,7 +143,8 @@ namespace JZXY.Duoke.Server
                     };
                     if (id != "0")
                     {
-                        bitem.Children.AddRange(GetFiles(ownderid, id)); // 获取下当前目的文件                    
+                        var ph = Path.Combine(floderName, name);
+                        bitem.Children.AddRange(GetFiles(ownderid, id, ph)); // 获取下当前目的文件                    
                     }
                     var child = item.SelectSingleNode("Childs");
                     var children = child.SelectNodes("Item");
@@ -161,7 +155,8 @@ namespace JZXY.Duoke.Server
                             var cid = citem.Attributes["Id"].Value;
                             if (cid != "0")
                             {
-                                bitem.Children.AddRange(GetFiles(ownderid, cid));
+                                var ph = Path.Combine(floderName, name);
+                                bitem.Children.AddRange(GetFiles(ownderid, cid, ph));
                             }
                         }
                     }
@@ -174,7 +169,12 @@ namespace JZXY.Duoke.Server
                 foreach (XmlNode folder in folders)
                 {
                     var name = folder.Attributes["Name"].Value;
-                    var path = CreateFolder(name);
+                    var newFolderName = name;
+                    if (!string.IsNullOrEmpty(floderName))
+                    {
+                        newFolderName = Path.Combine(floderName,name);
+                    }
+                    var path = CreateFolder(newFolderName);
                     var p = new FileModel()
                     {
                         Name = name,
@@ -201,7 +201,7 @@ namespace JZXY.Duoke.Server
                     foreach (XmlNode item in subfolders)
                     {
                         var sid = item.Attributes["Id"].Value;
-                        p.Children.AddRange(GetFiles(ownderid, sid));
+                        p.Children.AddRange(GetFiles(ownderid, sid, floderName));
                     }
                     fileModels.Add(p);
                 }
@@ -281,7 +281,7 @@ namespace JZXY.Duoke.Server
                 return "错误：" + exp.Message;
             }
         }
-        
+
         #endregion
     }
 }

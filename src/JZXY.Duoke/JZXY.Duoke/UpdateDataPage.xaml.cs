@@ -17,6 +17,8 @@ namespace JZXY.Duoke
 
         private UpdatingViewModel _viewModel;
 
+        private Interface.IMessage _messager = DependencyService.Get<Interface.IMessage>();
+
         public UpdateDataPage()
         {
             InitializeComponent();
@@ -24,8 +26,15 @@ namespace JZXY.Duoke
 
             new Task(() =>
             {
-                _duokeServer.GetDoucuments();
-                App.Current.MainPage = new MainPage();
+                try
+                {
+                    _duokeServer.GetDoucuments();
+                    App.Current.MainPage = new MainPage();
+                }
+                catch (Exception e)
+                {
+                    _messager.ShortAlert($"获取文档信息异常:{e.Message}");
+                }
             }).Start();
         }
 
