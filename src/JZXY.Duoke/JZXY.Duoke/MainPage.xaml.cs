@@ -50,27 +50,30 @@ namespace JZXY.Duoke
             _source = new List<FileModel>();
             try
             {
-                var files = Directory.GetFiles(path, ".", SearchOption.AllDirectories);
-                foreach (var file in files)
+                if (Directory.Exists(path))
                 {
-                    var fi = new FileInfo(file);
-                    _source.Add(new FileModel
+                    var files = Directory.GetFiles(path, ".", SearchOption.AllDirectories);
+                    foreach (var file in files)
                     {
-                        Name = fi.Name,
-                        FilePath = file,
-                        Size = fi.Length + " byte",
-                        Type = 1
-                    });
-                }
-                var folders = Directory.GetDirectories(path);
-                foreach (var file in folders)
-                {
-                    _source.Add(new FileModel
+                        var fi = new FileInfo(file);
+                        _source.Add(new FileModel
+                        {
+                            Name = fi.Name,
+                            FilePath = file,
+                            Size = fi.Length + " byte",
+                            Type = 1
+                        });
+                    }
+                    var folders = Directory.GetDirectories(path);
+                    foreach (var file in folders)
                     {
-                        Name = file,
-                        FilePath = file,
-                        Type = 0
-                    });
+                        _source.Add(new FileModel
+                        {
+                            Name = file,
+                            FilePath = file,
+                            Type = 0
+                        });
+                    }
                 }
             }
             catch (Exception)

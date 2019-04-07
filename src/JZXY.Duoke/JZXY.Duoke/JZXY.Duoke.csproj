@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="bg.png" />
     <None Remove="resource\bg.jpg" />
   </ItemGroup>
 
@@ -20,7 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="bg.jpg" />
+    <Content Include="bg.jpg" />
+    <EmbeddedResource Include="bg.png" />
   </ItemGroup>
 
   <ItemGroup>

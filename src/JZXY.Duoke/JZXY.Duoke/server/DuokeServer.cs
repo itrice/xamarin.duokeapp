@@ -18,11 +18,15 @@ namespace JZXY.Duoke.Server
 
         private IDocumentViewer _documentViewer;
 
+        /// <summary>
+        /// the temp path of current
+        /// </summary>
+        private static string _currentPath;
+
         #endregion
 
         public DuokeServer()
         {
-
             _documentViewer = DependencyService.Get<Interface.IDocumentViewer>();
         }
 
@@ -35,13 +39,15 @@ namespace JZXY.Duoke.Server
         /// </summary>
         private static string IPAddress { get; set; }
 
-        private string Root
-        {
-            get
-            {
-                return "/storage/emulated/0/jzxy";//Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);// "/storage/emulated/0/Download/"; //
-            }
-        }
+        private static string _rootPath;
+
+        //private string Root
+        //{
+        //    get
+        //    {
+        //        return "/storage/emulated/0/jzxy";//Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);// "/storage/emulated/0/Download/"; //
+        //    }
+        //}
 
         #endregion
 
@@ -75,6 +81,7 @@ namespace JZXY.Duoke.Server
             }
             HashKey = resptxt;
             _loginId = loginId;
+            _rootPath = Path.Combine("/storage/emulated/0/jzxy", _loginId);
             return true;
         }
 
@@ -107,14 +114,30 @@ namespace JZXY.Duoke.Server
                 {
                     continue;
                 }
-                var files = GetFiles(ownderid:id,floderName:item.Attributes["Name"].Value);
+                _currentPath = Path.Combine(_rootPath, item.Attributes["Name"].Value);
+                var files = GetFiles(ownderid: id, item.Attributes["Name"].Value);
                 fileModels.AddRange(files);
             }
             return fileModels;
         }
 
-        public List<FileModel> GetFiles(string ownderid, string floderid = "0", string floderName = "")
+        /// <summary>
+        /// 获取文件信息
+        /// </summary>
+        /// <param name="ownderid"></param>
+        /// <param name="floderid"></param>
+        /// <param name="floderName"></param>
+        /// <returns></returns>
+        public List<FileModel> GetFiles(string ownderid, string ownderName, string floderid = "0")
         {
+            #region 创建目录
+
+            var path = CreateFolder(ownderName);
+
+            #endregion
+
+            #region 获取文件
+
             var fileModels = new List<FileModel>();
             if (ownderid == "0")
             {
@@ -127,7 +150,7 @@ namespace JZXY.Duoke.Server
             var xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(rst);
             var dataNode = xmlDoc.SelectSingleNode("Data");
-            if (dataNode != null)// 这里是获取所有目录，不会涉及文件
+            if (dataNode != null)// 这里是第一次请求获取所有目录，不会涉及文件
             {
                 foreach (XmlNode item in dataNode.ChildNodes)
                 {
@@ -141,10 +164,9 @@ namespace JZXY.Duoke.Server
                         Name = name,
                         Type = 0
                     };
-                    if (id != "0")
+                    if (id != "0") // 获取下当前目的文件
                     {
-                        var ph = Path.Combine(floderName, name);
-                        bitem.Children.AddRange(GetFiles(ownderid, id, ph)); // 获取下当前目的文件                    
+                        bitem.Children.AddRange(GetFiles(ownderid, name, id));
                     }
                     var child = item.SelectSingleNode("Childs");
                     var children = child.SelectNodes("Item");
@@ -155,8 +177,8 @@ namespace JZXY.Duoke.Server
                             var cid = citem.Attributes["Id"].Value;
                             if (cid != "0")
                             {
-                                var ph = Path.Combine(floderName, name);
-                                bitem.Children.AddRange(GetFiles(ownderid, cid, ph));
+                                var on = Path.Combine(ownderName, citem.SelectSingleNode("Path").InnerText);
+                                bitem.Children.AddRange(GetFiles(ownderid, on,cid));
                             }
                         }
                     }
@@ -169,12 +191,6 @@ namespace JZXY.Duoke.Server
                 foreach (XmlNode folder in folders)
                 {
                     var name = folder.Attributes["Name"].Value;
-                    var newFolderName = name;
-                    if (!string.IsNullOrEmpty(floderName))
-                    {
-                        newFolderName = Path.Combine(floderName,name);
-                    }
-                    var path = CreateFolder(newFolderName);
                     var p = new FileModel()
                     {
                         Name = name,
@@ -201,11 +217,15 @@ namespace JZXY.Duoke.Server
                     foreach (XmlNode item in subfolders)
                     {
                         var sid = item.Attributes["Id"].Value;
-                        p.Children.AddRange(GetFiles(ownderid, sid, floderName));
+                        var on = Path.Combine(ownderName, item.InnerText);
+                        p.Children.AddRange(GetFiles(ownderid,on, sid));
                     }
                     fileModels.Add(p);
                 }
+
             }
+            #endregion
+
             return fileModels;
         }
 
@@ -252,9 +272,14 @@ namespace JZXY.Duoke.Server
             return filepath;
         }
 
+        /// <summary>
+        /// 创建文件夹
+        /// </summary>
+        /// <param name="folderName"></param>
+        /// <returns></returns>
         private string CreateFolder(string folderName)
         {
-            var path = Path.Combine(Root, _loginId, folderName);
+            var path = Path.Combine(_rootPath, folderName);
             Directory.CreateDirectory(path);
             return path;
         }

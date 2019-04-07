@@ -20,8 +20,9 @@ namespace JZXY.Duoke
         public LoginPage()
         {
             InitializeComponent();
+            this.BackgroundImage = "JZXY.Duoke.bg.jpg";
             var imgBackground = FindByName("imgBackground") as Image;
-            imgBackground.Source = ImageSource.FromResource("JZXY.Duoke.bg.jpg");
+            imgBackground.Source = ImageSource.FromResource("JZXY.Duoke.bg.png");
         }
 
         /// <summary>

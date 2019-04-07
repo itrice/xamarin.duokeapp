@@ -4,14 +4,10 @@
              BackgroundImage="JZXY.Duoke.bg.jpg"  
              x:Class="JZXY.Duoke.LoginPage">
     <ContentPage.Content>
-        <RelativeLayout HorizontalOptions="Fill" VerticalOptions="Fill">
-            <Image x:Name="imgBackground"    
-                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}" 
-                       RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}"></Image>
+        <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+            <Image x:Name="imgBackground"></Image>
             <StackLayout WidthRequest="300" Opacity="0.9" Padding="10"                         
-                         BackgroundColor="DarkSlateGray" 
-                         RelativeLayout.YConstraint="{ConstraintExpression Type=Constant,Property=Y}"
-                         RelativeLayout.XConstraint="{ConstraintExpression Type=Constant,Property=X}"
+                         BackgroundColor="DarkSlateGray"                          
                          HorizontalOptions="Center" 
                          VerticalOptions="Center">
                 <Label Text="多可文档管理终端" FontSize="Large" HorizontalOptions="Center" TextColor="LightYellow" />
@@ -28,6 +24,6 @@
                 <Entry x:Name="loginPwd" TextColor="White" Text="jzxy@502"></Entry>
                 <Button Text="登录" Clicked="Button_Clicked" TextColor="White"></Button>
             </StackLayout>
-        </RelativeLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
