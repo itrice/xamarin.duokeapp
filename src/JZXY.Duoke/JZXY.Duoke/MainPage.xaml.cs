@@ -19,6 +19,11 @@ namespace JZXY.Duoke
     {
         private List<FileModel> _source;
 
+        /// <summary>
+        /// 所有文件的集合，用于检索
+        /// </summary>
+        private List<FileModel> _allFiles;
+
         private UserModel _userModel;
 
         private JZXY.Duoke.Interface.IDocumentViewer _docViewer = DependencyService.Get<Interface.IDocumentViewer>();
@@ -28,8 +33,8 @@ namespace JZXY.Duoke
         public MainPage()
         {
             InitializeComponent();
-            _userModel = (App.Current as App).CurrentUser;    
-                       
+            _userModel = (App.Current as App).CurrentUser;
+
             //_currentPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), _userModel.LoginId);
             _currentPath = Path.Combine("/storage/emulated/0/jzxy/", _userModel.LoginId);
             LoadData(_currentPath);
@@ -52,28 +57,30 @@ namespace JZXY.Duoke
             {
                 if (Directory.Exists(path))
                 {
-                    var files = Directory.GetFiles(path, ".", SearchOption.AllDirectories);
-                    foreach (var file in files)
-                    {
-                        var fi = new FileInfo(file);
-                        _source.Add(new FileModel
-                        {
-                            Name = fi.Name,
-                            FilePath = file,
-                            Size = fi.Length + " byte",
-                            Type = 1
-                        });
-                    }
-                    var folders = Directory.GetDirectories(path);
-                    foreach (var file in folders)
-                    {
-                        _source.Add(new FileModel
-                        {
-                            Name = file,
-                            FilePath = file,
-                            Type = 0
-                        });
-                    }
+                    _source = GetFiles(path);
+                    _allFiles = GetAllFiles(path);
+                    //var files = Directory.GetFiles(path, ".", SearchOption.AllDirectories);
+                    //foreach (var file in files)
+                    //{
+                    //    var fi = new FileInfo(file);
+                    //    _source.Add(new FileModel
+                    //    {
+                    //        Name = fi.Name,
+                    //        FilePath = file,
+                    //        Size = fi.Length + " byte",
+                    //        Type = 1
+                    //    });
+                    //}
+                    //var folders = Directory.GetDirectories(path);
+                    //foreach (var file in folders)
+                    //{
+                    //    _source.Add(new FileModel
+                    //    {
+                    //        Name = file,
+                    //        FilePath = file,
+                    //        Type = 0    
+                    //    });
+                    //}
                 }
             }
             catch (Exception)
@@ -81,68 +88,59 @@ namespace JZXY.Duoke
             }
         }
 
-        private List<FileModel> GetFiles(FileModel file)
+        private List<FileModel> GetFiles(string path)
         {
+            var files = Directory.GetFiles(path, ".", SearchOption.TopDirectoryOnly);
             var rst = new List<FileModel>();
-            var files = file.Children.Where(o => o.Type == 1);
-            foreach (var item in files)
+            foreach (var file in files)
             {
-                item.Name = $"{file.Name}\\{item.Name}";
-                rst.Add(item);
+                var fi = new FileInfo(file);
+                rst.Add(new FileModel
+                {
+                    Name = fi.Name,
+                    FilePath = file,
+                    Size = fi.Length + " byte",
+                    Type = 1,
+                    TypeName = fi.Extension
+                });
             }
-            var folders = file.Children.Where(o => o.Type == 0);
-            foreach (var item in folders)
+            var folders = Directory.GetDirectories(path);
+            foreach (var folder in folders)
             {
-                item.Name = $"{file.Name}\\{item.Name}";
-                rst.AddRange(GetFiles(item));
+                var fi = new DirectoryInfo(folder);
+                rst.Add(new FileModel
+                {
+                    Name = fi.Name,
+                    FilePath = folder,
+                    Size = (fi.GetFiles().Length + fi.GetDirectories().Length).ToString(),
+                    Type = 0,
+                    TypeName = "文件夹"                    
+                });
             }
             return rst;
         }
 
-        private void TextCell_Tapped(object sender, EventArgs e)
+        /// <summary>
+        /// 获取所有文件
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private List<FileModel> GetAllFiles(string path)
         {
-            var cell = sender as TextCell;
-            if (cell != null)
+            var files = Directory.GetFiles(path, ".", SearchOption.AllDirectories);
+            var fileList = new List<FileModel>();
+            foreach (var file in files)
             {
-                if (cell.Detail == "0")
+                var fi = new FileInfo(file);
+                fileList.Add(new FileModel
                 {
-                    _currentPath = Path.Combine(_currentPath, cell.Text);
-                    LoadData(_currentPath);
-                    BindData();
-                }
-                else
-                {
-                    var filePath = cell.Text;
-                    var mimeType = GetMIMEType(Path.GetExtension(filePath).ToLower());
-                    //"application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-
-                    //switch (Path.GetExtension(filePath).ToLower())
-                    //{
-                    //    case ".bmp":
-                    //        mimeType = "image/bmp";
-                    //        break;
-                    //    case ".pdf":
-                    //        mimeType = "application/pdf";
-                    //        break;
-                    //    case ".png":
-                    //    case ".jpg":
-                    //        mimeType = "image/jpeg";
-                    //        break;
-                    //    default:
-                    //        mimeType = "*/*";
-                    //        break;
-                    //}
-
-                    try
-                    {
-                        _docViewer.ShowDocumentFile(filePath, mimeType);
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine(ex.Message);
-                    }
-                }
+                    Name = fi.Name,
+                    FilePath = file,
+                    Size = fi.Length + " byte",
+                    Type = 1
+                });
             }
+            return fileList;
         }
 
         private string GetMIMEType(string filePath)
@@ -226,5 +224,45 @@ namespace JZXY.Duoke
             {"",        "*/*"}
 
     };
+
+        #region 私有方法
+
+        // 当点击查询按钮时候执行
+        private void SearchBtn_Clicked(object sender, EventArgs e)
+        {
+            var keyWords = (FindByName("keywords") as Entry).Text;
+
+        }
+
+        private void TextCell_Tapped(object sender, EventArgs e)
+        {
+            var cell = sender as ViewCell;
+            if (cell != null)
+            {
+                var fileModel = cell.BindingContext as FileModel;
+                if (fileModel != null)
+                {
+                    if (fileModel.Type == 0)
+                    {
+                        LoadData(fileModel.FilePath);
+                        BindData();
+                    }
+                    else
+                    {
+                        var mimeType = GetMIMEType(fileModel.TypeName.ToLower());                        
+                        try
+                        {
+                            _docViewer.ShowDocumentFile(fileModel.FilePath, mimeType);
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine(ex.Message);
+                        }
+                    }
+                }
+            }
+        }
+
+        #endregion
     }
 }

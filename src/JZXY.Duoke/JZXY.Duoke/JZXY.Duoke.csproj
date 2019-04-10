@@ -16,12 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="forms9patch" Version="1.6.6.2" />
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.220655" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="bg.jpg" />
     <EmbeddedResource Include="bg.png" />
   </ItemGroup>
 

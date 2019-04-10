@@ -2,6 +2,28 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
+      "Forms9Patch/1.6.6.2": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.0",
+          "Rg.Plugins.Popup": "1.1.5.188",
+          "SkiaSharp.Svg": "1.59.1",
+          "SkiaSharp.Views.Forms": "1.59.3",
+          "Xamarin.Forms": "3.4.0.1008975"
+        },
+        "compile": {
+          "lib/netstandard1.0/Forms9Patch.dll": {},
+          "lib/netstandard1.0/FormsGestures.dll": {},
+          "lib/netstandard1.0/P42.NumericalMethods.dll": {},
+          "lib/netstandard1.0/P42.Utils.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/Forms9Patch.dll": {},
+          "lib/netstandard1.0/FormsGestures.dll": {},
+          "lib/netstandard1.0/P42.NumericalMethods.dll": {},
+          "lib/netstandard1.0/P42.Utils.dll": {}
+        }
+      },
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
@@ -24,6 +46,75 @@
         },
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
+        }
+      },
+      "Newtonsoft.Json/12.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Rg.Plugins.Popup/1.1.5.188": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "2.5.0.121934"
+        },
+        "compile": {
+          "lib/netstandard1.0/Rg.Plugins.Popup.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/Rg.Plugins.Popup.dll": {}
+        }
+      },
+      "SkiaSharp/1.59.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.3/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win7-x64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win7-x64"
+          },
+          "runtimes/win7-x86/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win7-x86"
+          }
+        }
+      },
+      "SkiaSharp.Svg/1.59.1": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/SkiaSharp.Svg.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.Svg.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.59.3": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.59.3",
+          "Xamarin.Forms": "2.4.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.Views.Forms.dll": {}
         }
       },
       "System.Numerics.Vectors/4.5.0": {
@@ -67,6 +158,83 @@
     }
   },
   "libraries": {
+    "Forms9Patch/1.6.6.2": {
+      "sha512": "bb7LpKZ4An8uqa3zBnI5JiKiVCDVW0/GMVDkST94253/X03hRfe/Eh5UTUxd6Qx8qci62SrDo8UlADwki645bA==",
+      "type": "package",
+      "path": "forms9patch/1.6.6.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "forms9patch.1.6.6.2.nupkg.sha512",
+        "forms9patch.nuspec",
+        "lib/MonoAndroid10/Forms9Patch.Droid.dll",
+        "lib/MonoAndroid10/Forms9Patch.Droid.pdb",
+        "lib/MonoAndroid10/Forms9Patch.dll",
+        "lib/MonoAndroid10/Forms9Patch.pdb",
+        "lib/MonoAndroid10/Forms9Patch.xml",
+        "lib/MonoAndroid10/FormsGestures.Droid.dll",
+        "lib/MonoAndroid10/FormsGestures.Droid.pdb",
+        "lib/MonoAndroid10/FormsGestures.dll",
+        "lib/MonoAndroid10/FormsGestures.pdb",
+        "lib/MonoAndroid10/FormsGestures.xml",
+        "lib/MonoAndroid10/MimeSharp.dll",
+        "lib/MonoAndroid10/MimeSharp.pdb",
+        "lib/MonoAndroid10/P42.NumericalMethods.dll",
+        "lib/MonoAndroid10/P42.NumericalMethods.pdb",
+        "lib/MonoAndroid10/P42.Utils.Droid.dll",
+        "lib/MonoAndroid10/P42.Utils.Droid.pdb",
+        "lib/MonoAndroid10/P42.Utils.dll",
+        "lib/MonoAndroid10/P42.Utils.pdb",
+        "lib/MonoAndroid10/desktop.ini",
+        "lib/Xamarin.iOS10/Forms9Patch.dll",
+        "lib/Xamarin.iOS10/Forms9Patch.iOS.dll",
+        "lib/Xamarin.iOS10/Forms9Patch.pdb",
+        "lib/Xamarin.iOS10/Forms9Patch.xml",
+        "lib/Xamarin.iOS10/FormsGestures.dll",
+        "lib/Xamarin.iOS10/FormsGestures.iOS.dll",
+        "lib/Xamarin.iOS10/FormsGestures.pdb",
+        "lib/Xamarin.iOS10/FormsGestures.xml",
+        "lib/Xamarin.iOS10/P42.NumericalMethods.dll",
+        "lib/Xamarin.iOS10/P42.NumericalMethods.pdb",
+        "lib/Xamarin.iOS10/P42.Utils.dll",
+        "lib/Xamarin.iOS10/P42.Utils.iOS.dll",
+        "lib/Xamarin.iOS10/P42.Utils.iOS.pdb",
+        "lib/Xamarin.iOS10/P42.Utils.pdb",
+        "lib/netstandard1.0/Forms9Patch.dll",
+        "lib/netstandard1.0/Forms9Patch.pdb",
+        "lib/netstandard1.0/Forms9Patch.xml",
+        "lib/netstandard1.0/FormsGestures.dll",
+        "lib/netstandard1.0/FormsGestures.pdb",
+        "lib/netstandard1.0/FormsGestures.xml",
+        "lib/netstandard1.0/P42.NumericalMethods.dll",
+        "lib/netstandard1.0/P42.NumericalMethods.pdb",
+        "lib/netstandard1.0/P42.Utils.dll",
+        "lib/netstandard1.0/P42.Utils.pdb",
+        "lib/uap10.0/Forms9Patch.UWP.dll",
+        "lib/uap10.0/Forms9Patch.UWP.pdb",
+        "lib/uap10.0/Forms9Patch.UWP.pri",
+        "lib/uap10.0/Forms9Patch.UWP/EnhancedListView.Resources.xbf",
+        "lib/uap10.0/Forms9Patch.UWP/Properties/Forms9Patch.UWP.rd.xml",
+        "lib/uap10.0/Forms9Patch.dll",
+        "lib/uap10.0/Forms9Patch.pdb",
+        "lib/uap10.0/Forms9Patch.xml",
+        "lib/uap10.0/FormsGestures.UWP.dll",
+        "lib/uap10.0/FormsGestures.UWP.pdb",
+        "lib/uap10.0/FormsGestures.UWP.pri",
+        "lib/uap10.0/FormsGestures.dll",
+        "lib/uap10.0/FormsGestures.pdb",
+        "lib/uap10.0/FormsGestures.xml",
+        "lib/uap10.0/MimeSharp.dll",
+        "lib/uap10.0/MimeSharp.pdb",
+        "lib/uap10.0/P42.NumericalMethods.dll",
+        "lib/uap10.0/P42.NumericalMethods.pdb",
+        "lib/uap10.0/P42.Utils.UWP.dll",
+        "lib/uap10.0/P42.Utils.UWP.pdb",
+        "lib/uap10.0/P42.Utils.UWP.pri",
+        "lib/uap10.0/P42.Utils.dll",
+        "lib/uap10.0/P42.Utils.pdb"
+      ]
+    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
@@ -208,6 +376,148 @@
         "lib/netstandard1.0/_._",
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/12.0.1": {
+      "sha512": "pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
+      "type": "package",
+      "path": "newtonsoft.json/12.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.pdb",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.pdb",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.pdb",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.pdb",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.pdb",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.pdb",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.pdb",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.pdb",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.pdb",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.12.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec"
+      ]
+    },
+    "Rg.Plugins.Popup/1.1.5.188": {
+      "sha512": "PE7uHJ/LuI5pSO1HpgjJ+v2KhNfftzqt/L1AoGH/5mX0fP7pcW6lG4FbUHuCFKolrzJfLLotuuET+hfN50Whpg==",
+      "type": "package",
+      "path": "rg.plugins.popup/1.1.5.188",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid/Rg.Plugins.Popup.Droid.dll",
+        "lib/MonoAndroid/Rg.Plugins.Popup.Droid.pdb",
+        "lib/MonoAndroid/Rg.Plugins.Popup.dll",
+        "lib/MonoAndroid/Rg.Plugins.Popup.pdb",
+        "lib/MonoTouch/Rg.Plugins.Popup.IOS.dll",
+        "lib/MonoTouch/Rg.Plugins.Popup.IOS.pdb",
+        "lib/MonoTouch/Rg.Plugins.Popup.dll",
+        "lib/MonoTouch/Rg.Plugins.Popup.pdb",
+        "lib/Xamarin.IOS/Rg.Plugins.Popup.IOS.dll",
+        "lib/Xamarin.IOS/Rg.Plugins.Popup.IOS.pdb",
+        "lib/Xamarin.IOS/Rg.Plugins.Popup.dll",
+        "lib/Xamarin.IOS/Rg.Plugins.Popup.pdb",
+        "lib/netstandard1.0/Rg.Plugins.Popup.dll",
+        "lib/netstandard1.0/Rg.Plugins.Popup.pdb",
+        "lib/uap10.0/Rg.Plugins.Popup.UWP.dll",
+        "lib/uap10.0/Rg.Plugins.Popup.UWP.pdb",
+        "lib/uap10.0/Rg.Plugins.Popup.dll",
+        "lib/uap10.0/Rg.Plugins.Popup.pdb",
+        "readme.txt",
+        "rg.plugins.popup.1.1.5.188.nupkg.sha512",
+        "rg.plugins.popup.nuspec"
+      ]
+    },
+    "SkiaSharp/1.59.3": {
+      "sha512": "MNVXKHn3dDGnJPtO4dPMU6GtvFHO1aUHDWm1V5i7QbacVJFxT+a8x1chGGdgFNl7pB4+/yzEo39x9Q7ggRYt6A==",
+      "type": "package",
+      "path": "skiasharp/1.59.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net45/SkiaSharp.dll.config",
+        "build/net45/SkiaSharp.targets",
+        "lib/MonoAndroid/SkiaSharp.dll",
+        "lib/MonoAndroid/SkiaSharp.xml",
+        "lib/XamarinMac/SkiaSharp.dll",
+        "lib/XamarinMac/SkiaSharp.xml",
+        "lib/XamariniOS/SkiaSharp.dll",
+        "lib/XamariniOS/SkiaSharp.xml",
+        "lib/XamarintvOS/SkiaSharp.dll",
+        "lib/XamarintvOS/SkiaSharp.xml",
+        "lib/net45/SkiaSharp.dll",
+        "lib/net45/SkiaSharp.dll.config",
+        "lib/net45/SkiaSharp.xml",
+        "lib/netstandard1.3/SkiaSharp.dll",
+        "lib/netstandard1.3/SkiaSharp.xml",
+        "lib/portable-net45+win8+wpa81+wp8/SkiaSharp.dll",
+        "lib/portable-net45+win8+wpa81+wp8/SkiaSharp.xml",
+        "lib/uap10.0/SkiaSharp.dll",
+        "lib/uap10.0/SkiaSharp.xml",
+        "runtimes/osx/native/libSkiaSharp.dylib",
+        "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win7-x64/native/libSkiaSharp.dll",
+        "runtimes/win7-x86/native/libSkiaSharp.dll",
+        "skiasharp.1.59.3.nupkg.sha512",
+        "skiasharp.nuspec",
+        "xamarin.interactive/SkiaSharp.Workbooks.dll"
+      ]
+    },
+    "SkiaSharp.Svg/1.59.1": {
+      "sha512": "TZb639RkTPPnZIbwIAPytR8+yANUtF5KvqhMPDkH1l3K4qnz7iq+bm9IenZ2zET3/jiUybgwKIrgUx5K+1bSRQ==",
+      "type": "package",
+      "path": "skiasharp.svg/1.59.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.3/SkiaSharp.Svg.dll",
+        "lib/portable-net45+win8+wpa81+wp8/SkiaSharp.Svg.dll",
+        "skiasharp.svg.1.59.1.nupkg.sha512",
+        "skiasharp.svg.nuspec"
+      ]
+    },
+    "SkiaSharp.Views.Forms/1.59.3": {
+      "sha512": "IqowchlXb3u+QB7gMnjsev9Zr77X/nvomRmZ6WkDIuiZvsIYlaU91PxwSRr8Qk5X9fXTwNBRVkmORwVWvZp6aA==",
+      "type": "package",
+      "path": "skiasharp.views.forms/1.59.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid/SkiaSharp.Views.Forms.dll",
+        "lib/XamarinMac/SkiaSharp.Views.Forms.dll",
+        "lib/XamariniOS/SkiaSharp.Views.Forms.dll",
+        "lib/netstandard1.3/SkiaSharp.Views.Forms.dll",
+        "lib/portable-net45+win8+wpa81+wp8/SkiaSharp.Views.Forms.dll",
+        "lib/uap10.0/SkiaSharp.Views.Forms.dll",
+        "skiasharp.views.forms.1.59.3.nupkg.sha512",
+        "skiasharp.views.forms.nuspec"
       ]
     },
     "System.Numerics.Vectors/4.5.0": {
@@ -462,33 +772,31 @@
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.3",
       "Xamarin.Essentials >= 1.0.1",
-      "Xamarin.Forms >= 3.6.0.220655"
+      "Xamarin.Forms >= 3.6.0.220655",
+      "forms9patch >= 1.6.6.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\admin\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
-    "C:\\ProgramData\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\iTrice\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj",
+      "projectUniqueName": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj",
       "projectName": "JZXY.Duoke",
-      "projectPath": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj",
-      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "H:\\Workspace4ASP\\Source\\xamarin\\duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\obj\\",
+      "projectPath": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\JZXY.Duoke.csproj",
+      "packagesPath": "C:\\Users\\iTrice\\.nuget\\packages\\",
+      "outputPath": "E:\\itrice\\xamarin\\xamarin.duokeapp\\src\\JZXY.Duoke\\JZXY.Duoke\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
-        "C:\\ProgramData\\Xamarin\\NuGet\\",
+        "C:\\Program Files (x86)\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\iTrice\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -496,13 +804,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://dotnetfeed.blob.core.windows.net/aspnet-aspnetcore-tooling/index.json": {},
-        "https://dotnetfeed.blob.core.windows.net/aspnet-aspnetcore/index.json": {},
-        "https://dotnetfeed.blob.core.windows.net/aspnet-entityframeworkcore/index.json": {},
-        "https://dotnetfeed.blob.core.windows.net/aspnet-extensions/index.json": {},
-        "https://dotnetfeed.blob.core.windows.net/dotnet-core/index.json": {},
-        "https://dotnetfeed.blob.core.windows.net/dotnet-windowsdesktop/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
@@ -531,6 +833,10 @@
           "Xamarin.Forms": {
             "target": "Package",
             "version": "[3.6.0.220655, )"
+          },
+          "forms9patch": {
+            "target": "Package",
+            "version": "[1.6.6.2, )"
           }
         },
         "imports": [
@@ -540,5 +846,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Forms9Patch 1.6.6.2 依赖于 Newtonsoft.Json (>= 12.0.0)，但找不到 Newtonsoft.Json 12.0.0。 已解决 Newtonsoft.Json 12.0.1 的近似最佳匹配。 ",
+      "libraryId": "Newtonsoft.Json",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    }
+  ]
 }

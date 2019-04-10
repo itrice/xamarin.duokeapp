@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace JZXY.Duoke
 {
@@ -26,12 +27,18 @@ namespace JZXY.Duoke
         /// 0:folder 1:file
         /// </summary>
         public int Type { get; set; }
-        
+
+        /// <summary>
+        ///
+        /// </summary>
+        public string TypeName { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
         public string FilePath { get; set; }
 
+        public ImageSource ImgSrouce{get;set;}
 
         public List<FileModel> Children { get; set; }
     }

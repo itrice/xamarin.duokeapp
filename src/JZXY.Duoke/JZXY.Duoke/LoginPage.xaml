@@ -1,29 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
-             BackgroundImage="JZXY.Duoke.bg.jpg"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:JZXY.Duoke;assembly=JZXY.Duoke"
+	         xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"             
              x:Class="JZXY.Duoke.LoginPage">
-    <ContentPage.Content>
-        <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
-            <Image x:Name="imgBackground"></Image>
-            <StackLayout WidthRequest="300" Opacity="0.9" Padding="10"                         
-                         BackgroundColor="DarkSlateGray"                          
-                         HorizontalOptions="Center" 
-                         VerticalOptions="Center">
-                <Label Text="多可文档管理终端" FontSize="Large" HorizontalOptions="Center" TextColor="LightYellow" />
-                <Label Text="地址" TextColor="White"
-                VerticalOptions="Start"></Label>
-                <!--<Entry x:Name="address" TextColor="White" Text="https://demo.315soft.com/"></Entry>-->
-                <Entry x:Name="address" TextColor="White" Text="http://jzxy.f3322.net:8091"></Entry>
-                <Label Text="账号" TextColor="White"
-                VerticalOptions="Start"></Label>
-                <Entry x:Name="loginID" TextColor="White" Text="yifei"></Entry>
-                <!--<Entry x:Name="loginID" TextColor="White" Text="guest"></Entry>-->
-                <Label Text="密码" TextColor="White"
-                VerticalOptions="Start"></Label>
-                <Entry x:Name="loginPwd" TextColor="White" Text="jzxy@502"></Entry>
-                <Button Text="登录" Clicked="Button_Clicked" TextColor="White"></Button>
-            </StackLayout>
-        </StackLayout>
-    </ContentPage.Content>
+    <ContentPage.Resources>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="Small"></Setter>
+            <Setter Property="TextColor" Value="Gray"></Setter>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+        </Style>
+        <Style TargetType="{x:Type Entry}">
+            <Setter Property="FontSize" Value="Small"></Setter>
+            <Setter Property="TextColor" Value="Gray"></Setter>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+        </Style>
+    </ContentPage.Resources>
+    <ContentView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Image Source="{local:ImageMultiResource JZXY.Duoke.bg.png}"
+                       Aspect="AspectFill"
+                       RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                       MinimumWidthRequest="540"
+                       MinimumHeightRequest="420" />
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label VerticalOptions="Center" HorizontalOptions="Center" Text="成都市环境监测中心站" FontSize="Medium" TextColor="WhiteSmoke"></Label>
+                    <Label VerticalOptions="Center" HorizontalOptions="Center" Text="受控文档查看器" FontSize="Small" TextColor="WhiteSmoke"></Label>
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid HorizontalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="地址"></Label>
+                    <!--<Entry x:Name="address" TextColor="White" Text="https://demo.315soft.com/"></Entry>-->
+                    <Entry Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="address" Text="http://jzxy.f3322.net:8091"></Entry>
+                    <Label Grid.Row="2" Grid.Column="0" Text="账号"></Label>
+                    <Entry Grid.Row="2" Grid.Column="1" x:Name="loginID" Text="yifei"></Entry>
+                    <Label Grid.Row="3" Grid.Column="0" Text="密码"></Label>
+                    <Entry Grid.Row="3" Grid.Column="1" x:Name="loginPwd" IsPassword="True" Text="jzxy@502"></Entry>
+                    <Button Grid.Row="4" Grid.Column="1" Text="登录" FontSize="Micro" Clicked="Button_Clicked" TextColor="Gray"></Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentView>
 </ContentPage>

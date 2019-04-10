@@ -41,6 +41,7 @@ namespace JZXY.Duoke.Droid
                     intent.SetFlags(ActivityFlags.GrantReadUriPermission);
                     intent.SetFlags(ActivityFlags.ClearWhenTaskReset | ActivityFlags.NewTask);
                     intent.SetDataAndType(uri, mimeType);
+                    
                     Forms.Context.StartActivity(Intent.CreateChooser(intent, "选择打开的程序"));
                 }
                 catch (Exception e)
@@ -48,22 +49,6 @@ namespace JZXY.Duoke.Droid
                     Toast.MakeText(context, e.Message, ToastLength.Long).Show();
                 }
             }
-        }
-
-        private String GetMimeType(Android.Net.Uri uri)
-        {
-            String mimeType = null;
-            if (uri.Scheme.Equals(ContentResolver.SchemeContent))
-            {
-                ContentResolver cr = Android.App.Application.Context.ContentResolver;
-                mimeType = cr.GetType(uri);
-            }
-            else
-            {
-                String fileExtension = MimeTypeMap.GetFileExtensionFromUrl(uri.ToString());
-                mimeType = MimeTypeMap.Singleton.GetMimeTypeFromExtension(fileExtension.ToLower());
-            }
-            return mimeType;
         }
 
         public string GetRootPath()

@@ -5,14 +5,38 @@
              x:Class="JZXY.Duoke.MainPage">
 
     <StackLayout Orientation="Vertical">
-        <StackLayout Orientation="Horizontal">
-            <Label Text="文件界面"></Label>
-        </StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Entry x:Name="keywords" Grid.Column="0" MaxLength="25"></Entry>
+            <Button Text="搜索" Grid.Column="1" Clicked="SearchBtn_Clicked"></Button>
+        </Grid>
         <ListView x:Name="listView">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Tapped="TextCell_Tapped" Text="{Binding FilePath}" Detail="{Binding Name}"></TextCell>
-                </DataTemplate>                
+                    <ViewCell Tapped="TextCell_Tapped">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding Path=ImgSrouce}"></Image>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding Path=Name}"/>
+                                <StackLayout Grid.Row="1" Orientation="Horizontal">
+                                    <Label Text="{Binding Path=Size}"></Label>
+                                    <Label Text="{Binding Path=TypeName}"></Label>
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
