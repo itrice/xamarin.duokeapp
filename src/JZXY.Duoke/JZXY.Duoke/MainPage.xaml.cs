@@ -17,8 +17,6 @@ namespace JZXY.Duoke
     [DesignTimeVisible(true)]
     public partial class MainPage : ContentPage
     {
-        private List<FileModel> _source;
-
         /// <summary>
         /// 所有文件的集合，用于检索
         /// </summary>
@@ -36,56 +34,16 @@ namespace JZXY.Duoke
             _userModel = (App.Current as App).CurrentUser;
 
             //_currentPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), _userModel.LoginId);
-            _currentPath = Path.Combine("/storage/emulated/0/jzxy/", _userModel.LoginId);
-            LoadData(_currentPath);
-            BindData();
+            _currentPath = Path.Combine("/storage/emulated/0/jzxy/", _userModel.LoginId);            
+            var source = GetFiles(_currentPath);
+            _allFiles = GetAllFiles(_currentPath);
+            BindData(source);
         }
 
-        private void BindData()
+        private void BindData(List<FileModel> source)
         {
             var lst = FindByName("listView") as ListView;
-            lst.ItemsSource = _source;
-        }
-
-        /// <summary>
-        /// 加载本地文件
-        /// </summary>
-        private void LoadData(string path)
-        {
-            _source = new List<FileModel>();
-            try
-            {
-                if (Directory.Exists(path))
-                {
-                    _source = GetFiles(path);
-                    _allFiles = GetAllFiles(path);
-                    //var files = Directory.GetFiles(path, ".", SearchOption.AllDirectories);
-                    //foreach (var file in files)
-                    //{
-                    //    var fi = new FileInfo(file);
-                    //    _source.Add(new FileModel
-                    //    {
-                    //        Name = fi.Name,
-                    //        FilePath = file,
-                    //        Size = fi.Length + " byte",
-                    //        Type = 1
-                    //    });
-                    //}
-                    //var folders = Directory.GetDirectories(path);
-                    //foreach (var file in folders)
-                    //{
-                    //    _source.Add(new FileModel
-                    //    {
-                    //        Name = file,
-                    //        FilePath = file,
-                    //        Type = 0    
-                    //    });
-                    //}
-                }
-            }
-            catch (Exception)
-            {
-            }
+            lst.ItemsSource = source;
         }
 
         private List<FileModel> GetFiles(string path)
@@ -230,8 +188,20 @@ namespace JZXY.Duoke
         // 当点击查询按钮时候执行
         private void SearchBtn_Clicked(object sender, EventArgs e)
         {
-            var keyWords = (FindByName("keywords") as Entry).Text;
-
+            var keyWords = (FindByName("keywords") as Entry).Text.Trim();
+            if(_allFiles == null)
+            {
+                return;
+            }
+            if (string.IsNullOrEmpty(keyWords))
+            {
+                BindData(_allFiles);
+            }
+            else
+            {
+                var source = _allFiles.Where(o => o.Name.Contains(keyWords) || keyWords.Contains(o.Name)).ToList();
+                BindData(source);
+            }
         }
 
         private void TextCell_Tapped(object sender, EventArgs e)
@@ -244,8 +214,8 @@ namespace JZXY.Duoke
                 {
                     if (fileModel.Type == 0)
                     {
-                        LoadData(fileModel.FilePath);
-                        BindData();
+                        var source = GetFiles(_currentPath);
+                        BindData(source);
                     }
                     else
                     {
