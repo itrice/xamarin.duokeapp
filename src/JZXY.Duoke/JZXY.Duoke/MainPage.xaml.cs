@@ -26,7 +26,11 @@ namespace JZXY.Duoke
 
         private JZXY.Duoke.Interface.IDocumentViewer _docViewer = DependencyService.Get<Interface.IDocumentViewer>();
 
+        private List<FileModel> _viewFiles;
+
         private string _currentPath;
+
+        private string _firstPath;
 
         public MainPage()
         {
@@ -34,16 +38,46 @@ namespace JZXY.Duoke
             _userModel = (App.Current as App).CurrentUser;
 
             //_currentPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), _userModel.LoginId);
-            _currentPath = Path.Combine("/storage/emulated/0/jzxy/", _userModel.LoginId);            
-            var source = GetFiles(_currentPath);
-            _allFiles = GetAllFiles(_currentPath);
+            var _firstPath = Path.Combine("/storage/emulated/0/jzxy/", _userModel.LoginId);
+            var source = GetFiles(_firstPath);
+            _allFiles = GetAllFiles(_firstPath);
+            _viewFiles = source;
             BindData(source);
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            if (string.IsNullOrEmpty(_currentPath))
+            {
+                DisplayAlert("提示", "已经是根目录", "确定");
+                return true;
+            }
+            var index = _currentPath.LastIndexOf("/");
+            if(index <= Path.Combine("/storage/emulated/0/jzxy/", _userModel.LoginId).Length - 1)
+            {
+                DisplayAlert("提示", "已经是根目录", "确定");
+                return true;
+            }
+            _currentPath = _currentPath.Substring(0, index);
+            LoadFileModel(_currentPath);
+
+            return true;
         }
 
         private void BindData(List<FileModel> source)
         {
             var lst = FindByName("listView") as ListView;
             lst.ItemsSource = source;
+        }
+
+        /// <summary>
+        /// 获取当前显示的列表
+        /// </summary>
+        /// <returns></returns>
+        private List<FileModel> GetViewSource()
+        {
+            var lst = FindByName("listView") as ListView;
+            return lst.ItemsSource as List<FileModel>;
         }
 
         private List<FileModel> GetFiles(string path)
@@ -55,6 +89,8 @@ namespace JZXY.Duoke
                 var fi = new FileInfo(file);
                 rst.Add(new FileModel
                 {
+                    Id = Guid.NewGuid().ToString(),
+                    ParentPath = path,
                     Name = fi.Name,
                     FilePath = file,
                     Size = fi.Length + " byte",
@@ -68,11 +104,13 @@ namespace JZXY.Duoke
                 var fi = new DirectoryInfo(folder);
                 rst.Add(new FileModel
                 {
+                    Id = Guid.NewGuid().ToString(),
+                    ParentPath = path,
                     Name = fi.Name,
                     FilePath = folder,
                     Size = (fi.GetFiles().Length + fi.GetDirectories().Length).ToString(),
                     Type = 0,
-                    TypeName = "文件夹"                    
+                    TypeName = "文件夹"
                 });
             }
             return rst;
@@ -189,16 +227,17 @@ namespace JZXY.Duoke
         private void SearchBtn_Clicked(object sender, EventArgs e)
         {
             var keyWords = (FindByName("keywords") as Entry).Text.Trim();
-            if(_allFiles == null)
+            if (_allFiles == null)
             {
                 return;
             }
             if (string.IsNullOrEmpty(keyWords))
             {
-                BindData(_allFiles);
+                BindData(_viewFiles);
             }
             else
             {
+                _viewFiles = GetViewSource();
                 var source = _allFiles.Where(o => o.Name.Contains(keyWords) || keyWords.Contains(o.Name)).ToList();
                 BindData(source);
             }
@@ -210,29 +249,42 @@ namespace JZXY.Duoke
             if (cell != null)
             {
                 var fileModel = cell.BindingContext as FileModel;
-                if (fileModel != null)
+                _currentPath = fileModel.FilePath;
+                LoadFileModel(fileModel);
+            }
+        }
+
+        private void LoadFileModel(FileModel fileModel)
+        {
+            if (fileModel != null)
+            {
+                if (fileModel.Type == 0)
                 {
-                    if (fileModel.Type == 0)
+                    var source = GetFiles(fileModel.FilePath);
+                    BindData(source);
+                }
+                else
+                {
+                    var mimeType = GetMIMEType(fileModel.TypeName.ToLower());
+                    try
                     {
-                        var source = GetFiles(_currentPath);
-                        BindData(source);
+                        _docViewer.ShowDocumentFile(fileModel.FilePath, mimeType);
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        var mimeType = GetMIMEType(fileModel.TypeName.ToLower());                        
-                        try
-                        {
-                            _docViewer.ShowDocumentFile(fileModel.FilePath, mimeType);
-                        }
-                        catch (Exception ex)
-                        {
-                            Debug.WriteLine(ex.Message);
-                        }
+                        Debug.WriteLine(ex.Message);
                     }
                 }
             }
         }
 
+        private void LoadFileModel(string path)
+        {
+            var source = GetFiles(path);
+            BindData(source);
+        }
+
         #endregion
     }
 }
+

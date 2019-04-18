@@ -20,7 +20,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid>
                 <Image Source="{local:ImageMultiResource JZXY.Duoke.bg.png}"
@@ -33,9 +34,10 @@
                     <Label VerticalOptions="Center" HorizontalOptions="Center" Text="受控文档查看器" FontSize="Small" TextColor="WhiteSmoke"></Label>
                 </StackLayout>
             </Grid>
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" MinimumWidthRequest="336">
                 <Grid HorizontalOptions="Center">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -46,15 +48,46 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Text="地址"></Label>
-                    <!--<Entry x:Name="address" TextColor="White" Text="https://demo.315soft.com/"></Entry>-->
-                    <Entry Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="address" Text="http://jzxy.f3322.net:8091"></Entry>
-                    <Label Grid.Row="2" Grid.Column="0" Text="账号"></Label>
-                    <Entry Grid.Row="2" Grid.Column="1" x:Name="loginID" Text="yifei"></Entry>
-                    <Label Grid.Row="3" Grid.Column="0" Text="密码"></Label>
-                    <Entry Grid.Row="3" Grid.Column="1" x:Name="loginPwd" IsPassword="True" Text="jzxy@502"></Entry>
-                    <Button Grid.Row="4" Grid.Column="1" Text="登录" FontSize="Micro" Clicked="Button_Clicked" TextColor="Gray"></Button>
+                    <f9p:Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="0" OutlineRadius="20" OutlineWidth="1" OutlineColor="Gray">
+                        <Grid VerticalOptions="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="5"/>
+                            </Grid.ColumnDefinitions>
+                            <Entry Grid.Column="1" x:Name="loginID" Text="yifei" Margin="0" Placeholder="请输入登录账号"></Entry>
+                            <f9p:Image Grid.Column="2" Source="{local:ImageMultiResource JZXY.Duoke.loginuser.png}" Fill="AspectFit"></f9p:Image>
+                        </Grid>
+                    </f9p:Frame>
+                    <f9p:Frame Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Padding="0" OutlineRadius="20" OutlineWidth="1" OutlineColor="Gray">
+                        <Grid VerticalOptions="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="5"/>
+                            </Grid.ColumnDefinitions>
+                            <Entry Grid.Column="1" x:Name="loginPwd" IsPassword="True" Text="jzxy@502"></Entry>
+                            <f9p:Image Grid.Column="2" Source="{local:ImageMultiResource JZXY.Duoke.password.png}" Fill="AspectFit"></f9p:Image>
+                        </Grid>
+                    </f9p:Frame>
+                    <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="20" Text="登录" Clicked="Button_Clicked" TextColor="White" BackgroundColor="#0899FF"></Button>
                 </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <f9p:Label Grid.Column="0"></f9p:Label>
+                <f9p:Label Grid.Column="1" HorizontalOptions="Center">2018©成都嘉泽兴业</f9p:Label>
+                <ImageButton Grid.Column="2" 
+                             WidthRequest="16"
+                             HeightRequest="16"
+                             Source="{local:ImageMultiResource JZXY.Duoke.setting.png}"
+                                 Clicked="SettingBtnOnClick"></ImageButton>
             </Grid>
         </Grid>
     </ContentView>

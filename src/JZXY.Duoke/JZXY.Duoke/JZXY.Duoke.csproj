@@ -12,7 +12,10 @@
 
   <ItemGroup>
     <None Remove="bg.png" />
+    <None Remove="loginuser.png" />
+    <None Remove="password.png" />
     <None Remove="resource\bg.jpg" />
+    <None Remove="setting.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,10 +26,16 @@
 
   <ItemGroup>
     <EmbeddedResource Include="bg.png" />
+    <EmbeddedResource Include="loginuser.png" />
+    <EmbeddedResource Include="password.png" />
+    <EmbeddedResource Include="setting.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SettingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

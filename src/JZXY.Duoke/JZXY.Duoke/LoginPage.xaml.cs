@@ -38,17 +38,15 @@ namespace JZXY.Duoke
         private void Button_Clicked(object sender, EventArgs e)
         {
             // yifei jzxy@502
-            var ip = FindByName("address") as Entry;
             var loginId = FindByName("loginID") as Entry;
             var loginPwd = FindByName("loginPwd") as Entry;
-            if (ip == null || string.IsNullOrEmpty(ip.Text)
-                || loginId == null || string.IsNullOrEmpty(loginId.Text)
-                || loginPwd == null || string.IsNullOrEmpty(loginPwd.Text))
+            
+            string AUrl = Server.LocalConfigManager.Instance.ServerAddress;
+            if (string.IsNullOrEmpty(AUrl))
             {
-                DisplayAlert("提示", "请填入必要信息", "确定");
+                DisplayAlert("认证失败", "请先配置服务器地址", "确定");
                 return;
             }
-            string AUrl = ip.Text.Trim() + "";
             var duokeServer = new DuokeServer();
             var user = new UserModel();
             user.LoginId = loginId.Text.Trim();
@@ -73,6 +71,11 @@ namespace JZXY.Duoke
                 _messager.ShortAlert("没有网络，进入离线模式");
                 App.Current.MainPage = new MainPage();
             }
+        }
+        
+        private void SettingBtnOnClick(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new SettingPage());
         }
     }
 }

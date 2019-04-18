@@ -36,6 +36,11 @@ namespace JZXY.Duoke
         /// <summary>
         /// 
         /// </summary>
+        public string ParentPath { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string FilePath { get; set; }
 
         public ImageSource ImgSrouce{get;set;}
