@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace JZXY.Duoke.Server
+namespace JZXY.Duoke.Servers
 {
     /// <summary>
     /// 定义一个本地配置服务

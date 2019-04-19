@@ -1,4 +1,4 @@
-﻿using JZXY.Duoke.Server;
+﻿using JZXY.Duoke.Servers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +10,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace JZXY.Duoke
+namespace JZXY.Duoke.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
@@ -19,7 +19,7 @@ namespace JZXY.Duoke
 
         public LoginPage()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace JZXY.Duoke
             var loginId = FindByName("loginID") as Entry;
             var loginPwd = FindByName("loginPwd") as Entry;
             
-            string AUrl = Server.LocalConfigManager.Instance.ServerAddress;
+            string AUrl = Servers.LocalConfigManager.Instance.ServerAddress;
             if (string.IsNullOrEmpty(AUrl))
             {
                 DisplayAlert("认证失败", "请先配置服务器地址", "确定");
@@ -69,7 +69,7 @@ namespace JZXY.Duoke
             else
             {
                 _messager.ShortAlert("没有网络，进入离线模式");
-                App.Current.MainPage = new MainPage();
+                App.Current.MainPage = new ItemsPage();
             }
         }
         

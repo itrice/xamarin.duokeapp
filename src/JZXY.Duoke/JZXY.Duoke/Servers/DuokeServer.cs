@@ -6,7 +6,7 @@ using System.Text;
 using System.Xml;
 using Xamarin.Forms;
 
-namespace JZXY.Duoke.Server
+namespace JZXY.Duoke.Servers
 {
     public class DuokeServer
     {

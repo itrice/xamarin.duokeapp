@@ -16,13 +16,13 @@ namespace JZXY.Duoke
         {
             InitializeComponent();
             var address = FindByName("entryAddress") as Entry;
-            address.Text = Server.LocalConfigManager.Instance.ServerAddress;
+            address.Text = Servers.LocalConfigManager.Instance.ServerAddress;
         }
 
         private void BtnOnClick(object sender, EventArgs e)
         {
             var address = FindByName("entryAddress") as Entry;
-            Server.LocalConfigManager.Instance.ServerAddress = address.Text;
+            Servers.LocalConfigManager.Instance.ServerAddress = address.Text;
 
         }
     }

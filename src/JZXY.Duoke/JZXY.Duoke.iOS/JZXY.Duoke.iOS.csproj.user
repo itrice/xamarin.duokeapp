@@ -5,5 +5,6 @@
     <DevelopmentTeamId />
     <SelectedDevice>iPhone 7 iOS 11.2</SelectedDevice>
     <DefaultDevice>iPhone 7 iOS 11.2</DefaultDevice>
+    <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
 </Project>

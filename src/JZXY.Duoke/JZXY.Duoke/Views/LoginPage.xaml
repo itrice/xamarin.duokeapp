@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:JZXY.Duoke;assembly=JZXY.Duoke"
 	         xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"             
-             x:Class="JZXY.Duoke.LoginPage">
+             x:Class="JZXY.Duoke.Views.LoginPage">
     <ContentPage.Resources>
         <Style TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="Small"></Setter>
@@ -24,7 +24,7 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid>
-                <Image Source="{local:ImageMultiResource JZXY.Duoke.bg.png}"
+                <Image Source="{local:ImageMultiResource JZXY.Duoke.Resources.bg.png}"
                        Aspect="AspectFill"
                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
                        MinimumWidthRequest="540"
@@ -57,7 +57,7 @@
                                 <ColumnDefinition Width="5"/>
                             </Grid.ColumnDefinitions>
                             <Entry Grid.Column="1" x:Name="loginID" Text="yifei" Margin="0" Placeholder="请输入登录账号"></Entry>
-                            <f9p:Image Grid.Column="2" Source="{local:ImageMultiResource JZXY.Duoke.loginuser.png}" Fill="AspectFit"></f9p:Image>
+                            <f9p:Image Grid.Column="2" Source="{local:ImageMultiResource JZXY.Duoke.Resources.loginuser.png}" Fill="AspectFit"></f9p:Image>
                         </Grid>
                     </f9p:Frame>
                     <f9p:Frame Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Padding="0" OutlineRadius="20" OutlineWidth="1" OutlineColor="Gray">
@@ -69,7 +69,7 @@
                                 <ColumnDefinition Width="5"/>
                             </Grid.ColumnDefinitions>
                             <Entry Grid.Column="1" x:Name="loginPwd" IsPassword="True" Text="jzxy@502"></Entry>
-                            <f9p:Image Grid.Column="2" Source="{local:ImageMultiResource JZXY.Duoke.password.png}" Fill="AspectFit"></f9p:Image>
+                            <f9p:Image Grid.Column="2" Source="{local:ImageMultiResource JZXY.Duoke.Resources.password.png}" Fill="AspectFit"></f9p:Image>
                         </Grid>
                     </f9p:Frame>
                     <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="20" Text="登录" Clicked="Button_Clicked" TextColor="White" BackgroundColor="#0899FF"></Button>
@@ -86,7 +86,7 @@
                 <ImageButton Grid.Column="2" 
                              WidthRequest="16"
                              HeightRequest="16"
-                             Source="{local:ImageMultiResource JZXY.Duoke.setting.png}"
+                             Source="{local:ImageMultiResource JZXY.Duoke.Resources.setting.png}"
                                  Clicked="SettingBtnOnClick"></ImageButton>
             </Grid>
         </Grid>

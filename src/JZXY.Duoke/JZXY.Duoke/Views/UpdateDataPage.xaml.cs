@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using JZXY.Duoke.Server;
+using JZXY.Duoke.Servers;
 using JZXY.Duoke.ViewModel;
 
-namespace JZXY.Duoke
+namespace JZXY.Duoke.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UpdateDataPage : ContentPage
@@ -22,6 +22,7 @@ namespace JZXY.Duoke
         public UpdateDataPage()
         {
             InitializeComponent();
+
             Init();
 
             new Task(() =>

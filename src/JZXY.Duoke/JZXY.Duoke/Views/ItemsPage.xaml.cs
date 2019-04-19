@@ -1,22 +1,87 @@
-﻿using System;
+﻿using JZXY.Duoke.Servers;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
-using System.IO;
-using JZXY.Duoke.Server;
-using Xamarin.Essentials;
-using System.Diagnostics;
 
-namespace JZXY.Duoke
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace JZXY.Duoke.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(true)]
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ItemsPage : ContentPage
     {
+        private string[,] MIME_MapTable = new string[,] {
+            {".3gp",    "video/3gpp"},
+            {".apk",    "application/vnd.android.package-archive"},
+            {".asf",    "video/x-ms-asf"},
+            {".avi",    "video/x-msvideo"},
+            {".bin",    "application/octet-stream"},
+            {".bmp",      "image/bmp"},
+            {".c",        "text/plain"},
+            {".class",    "application/octet-stream"},
+            {".conf",    "text/plain"},
+            {".cpp",    "text/plain"},
+            {".doc",    "application/msword"},
+            {".exe",    "application/octet-stream"},
+            {".gif",    "image/gif"},
+            {".gtar",    "application/x-gtar"},
+            {".gz",        "application/x-gzip"},
+            {".h",        "text/plain"},
+            {".htm",    "text/html"},
+            {".html",    "text/html"},
+            {".jar",    "application/java-archive"},
+            {".java",    "text/plain"},
+            {".jpeg",    "image/jpeg"},
+            {".jpg",    "image/jpeg"},
+            {".js",        "application/x-javascript"},
+            {".log",    "text/plain"},
+            {".m3u",    "audio/x-mpegurl"},
+            {".m4a",    "audio/mp4a-latm"},
+            {".m4b",    "audio/mp4a-latm"},
+            {".m4p",    "audio/mp4a-latm"},
+            {".m4u",    "video/vnd.mpegurl"},
+            {".m4v",    "video/x-m4v"},
+            {".mov",    "video/quicktime"},
+            {".mp2",    "audio/x-mpeg"},
+            {".mp3",    "audio/x-mpeg"},
+            {".mp4",    "video/mp4"},
+            {".mpc",    "application/vnd.mpohun.certificate"},
+            {".mpe",    "video/mpeg"},
+            {".mpeg",    "video/mpeg"},
+            {".mpg",    "video/mpeg"},
+            {".mpg4",    "video/mp4"},
+            {".mpga",    "audio/mpeg"},
+            {".msg",    "application/vnd.ms-outlook"},
+            {".ogg",    "audio/ogg"},
+            {".pdf",    "application/pdf"},
+            {".png",    "image/png"},
+            {".pps",    "application/vnd.ms-powerpoint"},
+            {".ppt",    "application/vnd.ms-powerpoint"},
+            {".prop",    "text/plain"},
+            {".rar",    "application/x-rar-compressed"},
+            {".rc",        "text/plain"},
+            {".rmvb",    "audio/x-pn-realaudio"},
+            {".rtf",    "application/rtf"},
+            {".sh",        "text/plain"},
+            {".tar",    "application/x-tar"},
+            {".tgz",    "application/x-compressed"},
+            {".txt",    "text/plain"},
+            {".wav",    "audio/x-wav"},
+            {".wma",    "audio/x-ms-wma"},
+            {".wmv",    "audio/x-ms-wmv"},
+            {".wps",    "application/vnd.ms-works"},  
+            //{".xml",    "text/xml"},  
+            {".xml",    "text/plain"},
+            {".z",        "application/x-compress"},
+            {".zip",    "application/zip"},
+            {"",        "*/*"}
+    };
+
         /// <summary>
         /// 所有文件的集合，用于检索
         /// </summary>
@@ -32,7 +97,7 @@ namespace JZXY.Duoke
 
         private string _firstPath;
 
-        public MainPage()
+        public ItemsPage()
         {
             InitializeComponent();
             _userModel = (App.Current as App).CurrentUser;
@@ -45,6 +110,12 @@ namespace JZXY.Duoke
             BindData(source);
         }
 
+        private void BindData(List<FileModel> source)
+        {
+            var lst = FindByName("listView") as ListView;
+            lst.ItemsSource = source;
+        }
+
         protected override bool OnBackButtonPressed()
         {
             if (string.IsNullOrEmpty(_currentPath))
@@ -53,7 +124,7 @@ namespace JZXY.Duoke
                 return true;
             }
             var index = _currentPath.LastIndexOf("/");
-            if(index <= Path.Combine("/storage/emulated/0/jzxy/", _userModel.LoginId).Length - 1)
+            if (index <= Path.Combine("/storage/emulated/0/jzxy/", _userModel.LoginId).Length - 1)
             {
                 DisplayAlert("提示", "已经是根目录", "确定");
                 return true;
@@ -62,12 +133,6 @@ namespace JZXY.Duoke
             LoadFileModel(_currentPath);
 
             return true;
-        }
-
-        private void BindData(List<FileModel> source)
-        {
-            var lst = FindByName("listView") as ListView;
-            lst.ItemsSource = source;
         }
 
         /// <summary>
@@ -152,75 +217,6 @@ namespace JZXY.Duoke
             return type;
         }
 
-        public string[,] MIME_MapTable = new string[,] {
-
-            {".3gp",    "video/3gpp"},
-            {".apk",    "application/vnd.android.package-archive"},
-            {".asf",    "video/x-ms-asf"},
-            {".avi",    "video/x-msvideo"},
-            {".bin",    "application/octet-stream"},
-            {".bmp",      "image/bmp"},
-            {".c",        "text/plain"},
-            {".class",    "application/octet-stream"},
-            {".conf",    "text/plain"},
-            {".cpp",    "text/plain"},
-            {".doc",    "application/msword"},
-            {".exe",    "application/octet-stream"},
-            {".gif",    "image/gif"},
-            {".gtar",    "application/x-gtar"},
-            {".gz",        "application/x-gzip"},
-            {".h",        "text/plain"},
-            {".htm",    "text/html"},
-            {".html",    "text/html"},
-            {".jar",    "application/java-archive"},
-            {".java",    "text/plain"},
-            {".jpeg",    "image/jpeg"},
-            {".jpg",    "image/jpeg"},
-            {".js",        "application/x-javascript"},
-            {".log",    "text/plain"},
-            {".m3u",    "audio/x-mpegurl"},
-            {".m4a",    "audio/mp4a-latm"},
-            {".m4b",    "audio/mp4a-latm"},
-            {".m4p",    "audio/mp4a-latm"},
-            {".m4u",    "video/vnd.mpegurl"},
-            {".m4v",    "video/x-m4v"},
-            {".mov",    "video/quicktime"},
-            {".mp2",    "audio/x-mpeg"},
-            {".mp3",    "audio/x-mpeg"},
-            {".mp4",    "video/mp4"},
-            {".mpc",    "application/vnd.mpohun.certificate"},
-            {".mpe",    "video/mpeg"},
-            {".mpeg",    "video/mpeg"},
-            {".mpg",    "video/mpeg"},
-            {".mpg4",    "video/mp4"},
-            {".mpga",    "audio/mpeg"},
-            {".msg",    "application/vnd.ms-outlook"},
-            {".ogg",    "audio/ogg"},
-            {".pdf",    "application/pdf"},
-            {".png",    "image/png"},
-            {".pps",    "application/vnd.ms-powerpoint"},
-            {".ppt",    "application/vnd.ms-powerpoint"},
-            {".prop",    "text/plain"},
-            {".rar",    "application/x-rar-compressed"},
-            {".rc",        "text/plain"},
-            {".rmvb",    "audio/x-pn-realaudio"},
-            {".rtf",    "application/rtf"},
-            {".sh",        "text/plain"},
-            {".tar",    "application/x-tar"},
-            {".tgz",    "application/x-compressed"},
-            {".txt",    "text/plain"},
-            {".wav",    "audio/x-wav"},
-            {".wma",    "audio/x-ms-wma"},
-            {".wmv",    "audio/x-ms-wmv"},
-            {".wps",    "application/vnd.ms-works"},  
-            //{".xml",    "text/xml"},  
-            {".xml",    "text/plain"},
-            {".z",        "application/x-compress"},
-            {".zip",    "application/zip"},
-            {"",        "*/*"}
-
-    };
-
         #region 私有方法
 
         // 当点击查询按钮时候执行
@@ -287,4 +283,3 @@ namespace JZXY.Duoke
         #endregion
     }
 }
-

@@ -1,7 +1,9 @@
-﻿using JZXY.Duoke.Server;
+﻿using JZXY.Duoke.Servers;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+using JZXY.Duoke.Views;
 
 namespace JZXY.Duoke
 {
@@ -15,6 +17,7 @@ namespace JZXY.Duoke
         public App()
         {
             InitializeComponent();
+
             MainPage = new LoginPage();
         }
 
