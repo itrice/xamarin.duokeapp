@@ -22,7 +22,8 @@ namespace JZXY.Duoke.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="最近访问" },
+                new HomeMenuItem {Id = MenuItemType.Browse, Title="文件浏览" },
+                new HomeMenuItem {Id = MenuItemType.Config, Title="选项配置" },
                 new HomeMenuItem {Id = MenuItemType.Exit, Title="退出" }
             };
 

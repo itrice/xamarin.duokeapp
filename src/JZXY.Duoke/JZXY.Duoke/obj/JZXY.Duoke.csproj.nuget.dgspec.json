@@ -49,6 +49,10 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "XLabs.Forms": {
+              "target": "Package",
+              "version": "[2.3.0-pre05, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.0.1, )"

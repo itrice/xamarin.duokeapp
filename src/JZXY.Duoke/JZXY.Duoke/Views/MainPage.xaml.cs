@@ -25,6 +25,7 @@ namespace JZXY.Duoke.Views
             InitializeComponent();
 
             MasterBehavior = MasterBehavior.Popover;
+
             MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
         }
 
@@ -36,6 +37,12 @@ namespace JZXY.Duoke.Views
                 {
                     case (int)MenuItemType.Browse:
                         MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                        break;
+                    case (int)MenuItemType.Config:                        
+                        //await Navigation.PushModalAsync(new NavigationPage(new SettingPage()));
+                        //IsPresented = false;
+                        //return;
+                        MenuPages.Add(id, new NavigationPage(new SettingPage()));
                         break;
                     case (int)MenuItemType.Exit:
                         System.Diagnostics.Process.GetCurrentProcess().Kill();
@@ -55,7 +62,6 @@ namespace JZXY.Duoke.Views
                 IsPresented = false;
             }
         }
-
     }
 }
 

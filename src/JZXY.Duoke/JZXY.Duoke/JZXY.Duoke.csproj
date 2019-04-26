@@ -20,6 +20,13 @@
     <None Remove="bg.png" />
     <None Remove="loginuser.png" />
     <None Remove="password.png" />
+    <None Remove="Resources\arrowleft.png" />
+    <None Remove="Resources\docfile.png" />
+    <None Remove="Resources\folder.png" />
+    <None Remove="Resources\img.png" />
+    <None Remove="Resources\menu.png" />
+    <None Remove="Resources\search.png" />
+    <None Remove="Resources\video.png" />
     <None Remove="setting.png" />
   </ItemGroup>
 
@@ -27,13 +34,27 @@
     <PackageReference Include="forms9patch" Version="1.6.6.2" />
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.220655" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
+    <PackageReference Include="XLabs.Forms" Version="2.3.0-pre05" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\arrowleft.png" />
     <EmbeddedResource Include="Resources\bg.png" />
+    <EmbeddedResource Include="Resources\docfile.png" />
+    <EmbeddedResource Include="Resources\folder.png" />
+    <EmbeddedResource Include="Resources\img.png" />
     <EmbeddedResource Include="Resources\loginuser.png" />
+    <EmbeddedResource Include="Resources\menu.png" />
     <EmbeddedResource Include="Resources\password.png" />
+    <EmbeddedResource Include="Resources\search.png" />
     <EmbeddedResource Include="Resources\setting.png" />
+    <EmbeddedResource Include="Resources\video.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\SettingPage1.xaml.cs">
+      <DependentUpon>SettingPage1.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

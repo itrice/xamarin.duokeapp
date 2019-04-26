@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
+      "ExifLib.PCL/1.0.2-pre01": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/ExifLib.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/ExifLib.dll": {}
+        }
+      },
       "Forms9Patch/1.6.6.2": {
         "type": "package",
         "dependencies": {
@@ -154,10 +163,80 @@
           "build/Xamarin.Forms.props": {},
           "build/Xamarin.Forms.targets": {}
         }
+      },
+      "XLabs.Core/2.3.0-pre05": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/XLabs.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/XLabs.Core.dll": {}
+        }
+      },
+      "XLabs.Forms/2.3.0-pre05": {
+        "type": "package",
+        "dependencies": {
+          "XLabs.Core": "2.3.0-pre05",
+          "XLabs.IoC": "2.3.0-pre05",
+          "XLabs.Platform": "2.3.0-pre05",
+          "XLabs.Serialization": "2.3.0-pre05",
+          "Xamarin.Forms": "2.3.2.127"
+        },
+        "compile": {
+          "lib/portable-net45+win8+wpa81+monoandroid+MonoTouch+xamarinios10/XLabs.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win8+wpa81+monoandroid+MonoTouch+xamarinios10/XLabs.Forms.dll": {}
+        }
+      },
+      "XLabs.IoC/2.3.0-pre05": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/XLabs.IOC.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/XLabs.IOC.dll": {}
+        }
+      },
+      "XLabs.Platform/2.3.0-pre05": {
+        "type": "package",
+        "dependencies": {
+          "ExifLib.PCL": "1.0.2-pre01",
+          "XLabs.Core": "2.3.0-pre05",
+          "XLabs.IoC": "2.3.0-pre05",
+          "XLabs.Serialization": "2.3.0-pre05"
+        },
+        "compile": {
+          "lib/netstandard1.0/XLabs.Platform.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/XLabs.Platform.dll": {}
+        }
+      },
+      "XLabs.Serialization/2.3.0-pre05": {
+        "type": "package",
+        "compile": {
+          "lib/NETStandard1.0/XLabs.Serialization.dll": {}
+        },
+        "runtime": {
+          "lib/NETStandard1.0/XLabs.Serialization.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "ExifLib.PCL/1.0.2-pre01": {
+      "sha512": "v31z/pzE+sPLSisnTtMhBuxXFF0y4B7tzYsoPwbRuvw1+lC9+5QKP+CHaZpWGoQkniCstwD1JyhhlrwffIqT8Q==",
+      "type": "package",
+      "path": "exiflib.pcl/1.0.2-pre01",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "exiflib.pcl.1.0.2-pre01.nupkg.sha512",
+        "exiflib.pcl.nuspec",
+        "lib/netstandard1.0/ExifLib.dll"
+      ]
+    },
     "Forms9Patch/1.6.6.2": {
       "sha512": "bb7LpKZ4An8uqa3zBnI5JiKiVCDVW0/GMVDkST94253/X03hRfe/Eh5UTUxd6Qx8qci62SrDo8UlADwki645bA==",
       "type": "package",
@@ -766,11 +845,96 @@
         "xamarin.forms.3.6.0.220655.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
+    },
+    "XLabs.Core/2.3.0-pre05": {
+      "sha512": "9JHeideqKTMnE3oqbER639B3dzefrLaEe5Fl0SPSXMmRiJSq898srUoC00JNGtRTKSNLI9ZfD42h5QjwFsDfKw==",
+      "type": "package",
+      "path": "xlabs.core/2.3.0-pre05",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.0/XLabs.Core.dll",
+        "lib/portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac/XLabs.Core.dll",
+        "xlabs.core.2.3.0-pre05.nupkg.sha512",
+        "xlabs.core.nuspec"
+      ]
+    },
+    "XLabs.Forms/2.3.0-pre05": {
+      "sha512": "+hl9ztcC+jtWxEDFmpnrzp3J78IBrxI2WgCAVFHs/ADnc3ABYn8StElXHmJNvW2jN9Dde0EZtqkqsnvnlgKawQ==",
+      "type": "package",
+      "path": "xlabs.forms/2.3.0-pre05",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid/XLabs.Forms.Droid.dll",
+        "lib/monoandroid/XLabs.Forms.dll",
+        "lib/portable-net45+win8+wpa81+monoandroid+MonoTouch+xamarinios10/XLabs.Forms.dll",
+        "lib/uap10.0/XLabs.Forms.UWP.dll",
+        "lib/uap10.0/XLabs.Forms.dll",
+        "lib/win8/XLabs.Forms.WinRT.dll",
+        "lib/win8/XLabs.Forms.dll",
+        "lib/wpa81/XLabs.Forms.WinRT.Phone.dll",
+        "lib/wpa81/XLabs.Forms.dll",
+        "lib/xamarinios10/XLabs.Forms.dll",
+        "lib/xamarinios10/XLabs.Forms.iOS.dll",
+        "xlabs.forms.2.3.0-pre05.nupkg.sha512",
+        "xlabs.forms.nuspec"
+      ]
+    },
+    "XLabs.IoC/2.3.0-pre05": {
+      "sha512": "6XqKBkxvU362b+FmnjgoxkcKxCk/MNF5q2ecLsHu/MxFIdrxl8EKYdYOPo+ktyff4W4PGCGwSUJEI7EhJEgMFg==",
+      "type": "package",
+      "path": "xlabs.ioc/2.3.0-pre05",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.0/XLabs.IOC.dll",
+        "lib/portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac/XLabs.IOC.dll",
+        "xlabs.ioc.2.3.0-pre05.nupkg.sha512",
+        "xlabs.ioc.nuspec"
+      ]
+    },
+    "XLabs.Platform/2.3.0-pre05": {
+      "sha512": "kdwCt/XfHqC3nJgyToiXHojQ2JMws/L4lCBD1ZCiIJAbSIOa6XrCx68TwIhGyeJkJhuYv8dcbJNmh+QzlHnBww==",
+      "type": "package",
+      "path": "xlabs.platform/2.3.0-pre05",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid/XLabs.Platform.Droid.dll",
+        "lib/monoandroid/XLabs.Platform.dll",
+        "lib/netstandard1.0/XLabs.Platform.dll",
+        "lib/portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10/XLabs.Platform.dll",
+        "lib/uap10.0/XLabs.Platform.UWP.dll",
+        "lib/uap10.0/XLabs.Platform.dll",
+        "lib/win8/XLabs.Platform.WinRT.dll",
+        "lib/win8/XLabs.Platform.dll",
+        "lib/wpa81/XLabs.Platform.WinRT.Phone.dll",
+        "lib/wpa81/XLabs.Platform.dll",
+        "lib/xamarinios10/XLabs.Platform.dll",
+        "lib/xamarinios10/XLabs.Platform.iOS.dll",
+        "xlabs.platform.2.3.0-pre05.nupkg.sha512",
+        "xlabs.platform.nuspec"
+      ]
+    },
+    "XLabs.Serialization/2.3.0-pre05": {
+      "sha512": "Z6n0TXQsHfYdrQoVXaID6o1Mc7YIl4ALLsyNxmrV38MxeOH+zxQN5LUE/vdrtcm57AspLoM1noB3t5r1yDnaEA==",
+      "type": "package",
+      "path": "xlabs.serialization/2.3.0-pre05",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/NETStandard1.0/XLabs.Serialization.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac/XLabs.Serialization.dll",
+        "xlabs.serialization.2.3.0-pre05.nupkg.sha512",
+        "xlabs.serialization.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.3",
+      "XLabs.Forms >= 2.3.0-pre05",
       "Xamarin.Essentials >= 1.0.1",
       "Xamarin.Forms >= 3.6.0.220655",
       "forms9patch >= 1.6.6.2"
@@ -826,6 +990,10 @@
             "version": "[2.0.3, )",
             "autoReferenced": true
           },
+          "XLabs.Forms": {
+            "target": "Package",
+            "version": "[2.3.0-pre05, )"
+          },
           "Xamarin.Essentials": {
             "target": "Package",
             "version": "[1.0.1, )"
@@ -854,6 +1022,16 @@
       "warningLevel": 1,
       "message": "Forms9Patch 1.6.6.2 依赖于 Newtonsoft.Json (>= 12.0.0)，但找不到 Newtonsoft.Json 12.0.0。 已解决 Newtonsoft.Json 12.0.1 的近似最佳匹配。 ",
       "libraryId": "Newtonsoft.Json",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "已使用“.NETFramework,Version=v4.6.1”而不是项目目标框架“.NETStandard,Version=v2.0”还原包“XLabs.Forms 2.3.0-pre05”。此包可能与项目不完全兼容。",
+      "libraryId": "XLabs.Forms",
       "targetGraphs": [
         ".NETStandard,Version=v2.0"
       ]

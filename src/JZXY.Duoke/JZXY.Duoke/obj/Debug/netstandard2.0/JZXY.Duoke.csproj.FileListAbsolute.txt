@@ -22,10 +22,11 @@ H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\net
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\JZXY.Duoke.pdb
 H:\Workspace4ASP\Source\xamarin\duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\JZXY.Duoke.csprojAssemblyReference.cache
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\JZXY.Duoke.csprojAssemblyReference.cache
-E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\XamlC.stamp
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\Views\SettingPage.xaml.g.cs
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\Views\UpdateDataPage.xaml.g.cs
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\Views\ItemsPage.xaml.g.cs
 E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\Views\MenuPage.xaml.g.cs
+E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\XamlC.stamp
+E:\itrice\xamarin\xamarin.duokeapp\src\JZXY.Duoke\JZXY.Duoke\obj\Debug\netstandard2.0\Views\SettingPage1.xaml.g.cs

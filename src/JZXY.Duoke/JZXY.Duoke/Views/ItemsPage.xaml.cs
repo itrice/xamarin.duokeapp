@@ -91,12 +91,9 @@ namespace JZXY.Duoke.Views
 
         private JZXY.Duoke.Interface.IDocumentViewer _docViewer = DependencyService.Get<Interface.IDocumentViewer>();
 
-        private List<FileModel> _viewFiles;
-
         private string _currentPath;
 
         private string _firstPath;
-
         public ItemsPage()
         {
             InitializeComponent();
@@ -104,16 +101,15 @@ namespace JZXY.Duoke.Views
 
             //_currentPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), _userModel.LoginId);
             var _firstPath = Path.Combine("/storage/emulated/0/jzxy/", _userModel.LoginId);
+            _currentPath = _firstPath;
             var source = GetFiles(_firstPath);
             _allFiles = GetAllFiles(_firstPath);
-            _viewFiles = source;
             BindData(source);
         }
 
         private void BindData(List<FileModel> source)
         {
-            var lst = FindByName("listView") as ListView;
-            lst.ItemsSource = source;
+            listView.ItemsSource = source;
         }
 
         protected override bool OnBackButtonPressed()
@@ -141,17 +137,19 @@ namespace JZXY.Duoke.Views
         /// <returns></returns>
         private List<FileModel> GetViewSource()
         {
-            var lst = FindByName("listView") as ListView;
-            return lst.ItemsSource as List<FileModel>;
+            return listView.ItemsSource as List<FileModel>;
         }
 
         private List<FileModel> GetFiles(string path)
         {
+            var di = new DirectoryInfo(path);
+            Title = di.Name;
             var files = Directory.GetFiles(path, ".", SearchOption.TopDirectoryOnly);
             var rst = new List<FileModel>();
             foreach (var file in files)
             {
                 var fi = new FileInfo(file);
+
                 rst.Add(new FileModel
                 {
                     Id = Guid.NewGuid().ToString(),
@@ -160,10 +158,12 @@ namespace JZXY.Duoke.Views
                     FilePath = file,
                     Size = fi.Length + " byte",
                     Type = 1,
-                    TypeName = fi.Extension
+                    ImgSrouce = GetIoc(fi.Extension),
+                    TypeName = fi.Extension,
                 });
             }
             var folders = Directory.GetDirectories(path);
+
             foreach (var folder in folders)
             {
                 var fi = new DirectoryInfo(folder);
@@ -175,6 +175,7 @@ namespace JZXY.Duoke.Views
                     FilePath = folder,
                     Size = (fi.GetFiles().Length + fi.GetDirectories().Length).ToString(),
                     Type = 0,
+                    ImgSrouce = GetIoc(fi.Extension),
                     TypeName = "文件夹"
                 });
             }
@@ -198,7 +199,8 @@ namespace JZXY.Duoke.Views
                     Name = fi.Name,
                     FilePath = file,
                     Size = fi.Length + " byte",
-                    Type = 1
+                    Type = 1,
+                    ImgSrouce = GetIoc(fi.Extension),
                 });
             }
             return fileList;
@@ -219,22 +221,43 @@ namespace JZXY.Duoke.Views
 
         #region 私有方法
 
+        private ImageSource GetIoc(string extension)
+        {
+            switch (extension)
+            {
+                case "":
+                    return ImageSource.FromResource("JZXY.Duoke.Resources.folder.png");
+                case ".jpg":
+                case ".png":
+                case ".bmp":
+                case ".gif":
+                    return ImageSource.FromResource("JZXY.Duoke.Resources.img.png");
+                case ".mp4":
+                case ".avi":
+                case ".3gp":
+                case ".wma":
+                case ".wav":
+                    return ImageSource.FromResource("JZXY.Duoke.Resources.video.png");
+                default:
+                    return ImageSource.FromResource("JZXY.Duoke.Resources.docfile.png");
+            }
+        }
+
         // 当点击查询按钮时候执行
         private void SearchBtn_Clicked(object sender, EventArgs e)
         {
-            var keyWords = (FindByName("keywords") as Entry).Text.Trim();
             if (_allFiles == null)
             {
                 return;
             }
-            if (string.IsNullOrEmpty(keyWords))
+            if (fileNameSearchBar.Text == null || string.IsNullOrEmpty(fileNameSearchBar.Text))
             {
-                BindData(_viewFiles);
+                LoadFileModel(_currentPath);
             }
             else
             {
-                _viewFiles = GetViewSource();
-                var source = _allFiles.Where(o => o.Name.Contains(keyWords) || keyWords.Contains(o.Name)).ToList();
+                var keyWords = fileNameSearchBar.Text.Trim();
+                var source = GetAllFiles(_currentPath).Where(o => o.Name.Contains(keyWords) || keyWords.Contains(o.Name)).ToList();
                 BindData(source);
             }
         }
@@ -281,5 +304,6 @@ namespace JZXY.Duoke.Views
         }
 
         #endregion
+
     }
 }

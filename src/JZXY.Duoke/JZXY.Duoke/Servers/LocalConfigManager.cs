@@ -9,7 +9,7 @@ namespace JZXY.Duoke.Servers
     /// <summary>
     /// 定义一个本地配置服务
     /// </summary>
-     class LocalConfigManager
+    public class LocalConfigManager
     {
         private Dictionary<int, string> _dic;
 
@@ -20,11 +20,11 @@ namespace JZXY.Duoke.Servers
             _instance = new LocalConfigManager();
         }
 
-        enum DicKey
+        public enum DicKey
         {
-            ADDRESS, ISAUTOLOGIN, ISSAVELOGININFO,
+            ADDRESS, ISAUTOLOGIN, ISSAVELOGININFO, LOGIN_ID, LOGIN_PWD
         }
-        
+
         public static LocalConfigManager Instance
         {
             get
@@ -87,24 +87,22 @@ namespace JZXY.Duoke.Servers
                 SetValue(DicKey.ADDRESS, value);
             }
         }
-        
-        #region private methods
 
         /// <summary>
         /// set value of the key
         /// </summary>
         /// <param name="address"></param>
-        private void SetValue(DicKey key, string address)
+        public void SetValue(DicKey key, string value)
         {
             var dic = GetKeyValues();
-            var ikey = (int)DicKey.ADDRESS;
+            var ikey = (int)key;
             if (dic.ContainsKey(ikey))
             {
-                dic[ikey] = address;
+                dic[ikey] = value;
             }
             else
             {
-                dic.Add(ikey, address);
+                dic.Add(ikey, value);
             }
             SetKeyValues(dic);
         }
@@ -114,10 +112,10 @@ namespace JZXY.Duoke.Servers
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        private string GetValue(DicKey key)
+        public string GetValue(DicKey key)
         {
             var dic = GetKeyValues();
-            var ikey = (int)key;            
+            var ikey = (int)key;
             if (dic.ContainsKey(ikey))
             {
                 return dic[ikey];
@@ -125,6 +123,9 @@ namespace JZXY.Duoke.Servers
 
             return string.Empty;
         }
+
+
+        #region private methods
 
         /// <summary>
         /// to convert string to boolean
@@ -175,7 +176,7 @@ namespace JZXY.Duoke.Servers
                     _dic = JsonConvert.DeserializeObject<Dictionary<int, string>>(fileContent);
                 }
             }
-            if(_dic == null)
+            if (_dic == null)
             {
                 return new Dictionary<int, string>();
             }
@@ -190,7 +191,7 @@ namespace JZXY.Duoke.Servers
         {
             var fileContent = JsonConvert.SerializeObject(dic);
             var fullFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "my.config");
-            File.WriteAllText(fullFileName, fileContent);            
+            File.WriteAllText(fullFileName, fileContent);
         }
 
         #endregion

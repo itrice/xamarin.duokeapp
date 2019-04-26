@@ -8,6 +8,7 @@ namespace JZXY.Duoke.Models
     {
         Browse,
         Resent,
+        Config,
         Exit
     }
     public class HomeMenuItem

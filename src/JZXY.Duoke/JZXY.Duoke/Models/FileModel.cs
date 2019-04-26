@@ -37,7 +37,7 @@ namespace JZXY.Duoke
         /// 
         /// </summary>
         public string ParentPath { get; set; }
-
+        
         /// <summary>
         /// 
         /// </summary>

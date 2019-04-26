@@ -73,6 +73,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\CustomEntryRenderer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DocumentViewer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Messager.cs" />

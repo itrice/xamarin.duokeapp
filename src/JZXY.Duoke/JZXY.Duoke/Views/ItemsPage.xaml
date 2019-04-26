@@ -1,42 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="详细"
+             xmlns:views="clr-namespace:JZXY.Duoke.Views;assembly=JZXY.Duoke"
+             xmlns:local="clr-namespace:JZXY.Duoke;assembly=JZXY.Duoke"
+	         xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"     
+             Title="{Binding Title}"
              x:Class="JZXY.Duoke.Views.ItemsPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="aa">
+        <ToolbarItem Text="">
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <Grid BackgroundColor="#15135225">
+            <Grid BackgroundColor="#0E87FF" Padding="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="40"/>
                 </Grid.ColumnDefinitions>
-                <Entry x:Name="keywords" Grid.Column="0" MaxLength="25"></Entry>
-                <Button Text="搜索" Grid.Column="1" Clicked="SearchBtn_Clicked"></Button>
+                <f9p:Frame Grid.Column="0" Padding="0" OutlineRadius="3" OutlineWidth="1" OutlineColor="White" BackgroundColor="White">
+                    <views:CustomSearchBar x:Name="fileNameSearchBar" Placeholder="搜索" PlaceholderColor="LightGray" BackgroundColor="Transparent"></views:CustomSearchBar>
+                </f9p:Frame>
+                <ImageButton Grid.Column="1"                       
+                             WidthRequest="24"
+                             HeightRequest="24"
+                             HorizontalOptions="Center"
+                             Source="{local:ImageMultiResource JZXY.Duoke.Resources.search.png}" 
+                             BackgroundColor="Transparent" Clicked="SearchBtn_Clicked"></ImageButton>
             </Grid>
-            <ListView x:Name="listView">
+            <ListView x:Name="listView" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell Tapped="TextCell_Tapped">
-                            <Grid>
+                            <Grid Padding="0,3,0,3">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="80"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Source="{Binding Path=ImgSrouce}"></Image>
-                                <Grid Grid.Column="1">
+                                <Image Source="{Binding Path=ImgSrouce}" WidthRequest="18"></Image>
+                                <Grid Grid.Column="1" VerticalOptions="Center">
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
                                         <RowDefinition/>
-                                    </Grid.RowDefinitions>                                    
+                                    </Grid.RowDefinitions>
                                     <Label Text="{Binding Path=Name}"/>
                                     <StackLayout Grid.Row="1" Orientation="Horizontal">
-                                        <Label Text="{Binding Path=Size}"></Label>
-                                        <Label Text="{Binding Path=TypeName}"></Label>
+                                        <Label Text="{Binding Path=Size}" FontSize="Micro"></Label>
+                                        <Label Text="{Binding Path=TypeName}" FontSize="Micro"></Label>
                                     </StackLayout>
                                 </Grid>
                             </Grid>

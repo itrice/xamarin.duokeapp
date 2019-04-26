@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:JZXY.Duoke;assembly=JZXY.Duoke"
-	         xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"             
+	         xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:views="clr-namespace:JZXY.Duoke.Views"
              x:Class="JZXY.Duoke.Views.LoginPage">
     <ContentPage.Resources>
         <Style TargetType="{x:Type Label}">
@@ -34,7 +36,7 @@
                     <Label VerticalOptions="Center" HorizontalOptions="Center" Text="受控文档查看器" FontSize="Small" TextColor="WhiteSmoke"></Label>
                 </StackLayout>
             </Grid>
-            <Grid Grid.Row="1" MinimumWidthRequest="336">
+            <Grid Grid.Row="1" MinimumWidthRequest="400">
                 <Grid HorizontalOptions="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -55,8 +57,8 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="5"/>
-                            </Grid.ColumnDefinitions>
-                            <Entry Grid.Column="1" x:Name="loginID" Text="yifei" Margin="0" Placeholder="请输入登录账号"></Entry>
+                            </Grid.ColumnDefinitions>                            
+                            <views:CustomEntry Grid.Column="1" x:Name="loginID" Text="yifei" BackgroundColor="Transparent" Margin="0" Placeholder="请输入登录账号"></views:CustomEntry>
                             <f9p:Image Grid.Column="2" Source="{local:ImageMultiResource JZXY.Duoke.Resources.loginuser.png}" Fill="AspectFit"></f9p:Image>
                         </Grid>
                     </f9p:Frame>
@@ -68,10 +70,14 @@
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="5"/>
                             </Grid.ColumnDefinitions>
-                            <Entry Grid.Column="1" x:Name="loginPwd" IsPassword="True" Text="jzxy@502"></Entry>
+                            <views:CustomEntry Grid.Column="1" x:Name="loginPwd" IsPassword="True" Text="jzxy@502"></views:CustomEntry>
                             <f9p:Image Grid.Column="2" Source="{local:ImageMultiResource JZXY.Duoke.Resources.password.png}" Fill="AspectFit"></f9p:Image>
                         </Grid>
                     </f9p:Frame>
+                    <StackLayout Grid.Row="4" Orientation="Horizontal">
+                        <controls:CheckBox x:Name="chk_remember" DefaultText="记住信息"></controls:CheckBox>
+                        <controls:CheckBox x:Name="chk_autologin" DefaultText="自动登录"></controls:CheckBox>
+                    </StackLayout>
                     <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="20" Text="登录" Clicked="Button_Clicked" TextColor="White" BackgroundColor="#0899FF"></Button>
                 </Grid>
             </Grid>
@@ -82,10 +88,13 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <f9p:Label Grid.Column="0"></f9p:Label>
-                <f9p:Label Grid.Column="1" HorizontalOptions="Center">2018©成都嘉泽兴业</f9p:Label>
+                <f9p:Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">2019 © 成都嘉泽兴业</f9p:Label>
                 <ImageButton Grid.Column="2" 
-                             WidthRequest="16"
-                             HeightRequest="16"
+                             Margin="0,0,10,0"
+                             WidthRequest="22"
+                             HeightRequest="22"
+                             VerticalOptions="Center"
+                             BackgroundColor="Transparent"
                              Source="{local:ImageMultiResource JZXY.Duoke.Resources.setting.png}"
                                  Clicked="SettingBtnOnClick"></ImageButton>
             </Grid>

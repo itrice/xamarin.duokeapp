@@ -12,9 +12,9 @@ namespace JZXY.Duoke
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     [DesignTimeVisible(true)]
-    public partial class SettingPage : ContentPage
+    public partial class SettingPage1 : ContentPage
     {
-        public SettingPage()
+        public SettingPage1()
         {
             InitializeComponent();
 
@@ -32,6 +32,11 @@ namespace JZXY.Duoke
                 Servers.LocalConfigManager.Instance.IsSaveLoginInfo = autoSave.IsToggled;
                 Servers.LocalConfigManager.Instance.IsAutoLogin = autoLogin.IsToggled;
             });
+        }
+
+        async void GoBack(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
         }
     }
 }
